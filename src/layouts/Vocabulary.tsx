@@ -31,7 +31,7 @@ const Vocabulary = () => {
 						className="flex-row items-center bg-gray-100 px-3 py-1 rounded-lg"
 					>
 						<Ionicons name="arrow-back" size={18} color="black" />
-						<Text className="ml-1 text-sm font-medium">Back</Text>
+						<Text className="ml-1 text-sm font-medium">Back1</Text>
 					</Pressable>
 				</View>
 			)
