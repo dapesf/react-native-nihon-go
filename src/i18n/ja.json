@@ -1,0 +1,16 @@
+{
+	"dashboard": {
+		"sections": {
+			"basic": "基本",
+			"vocabulary": "単語",
+			"grammar": "文法",
+			"kanji": "漢字"
+		},
+		"items": {
+			"alphabet": "五十音",
+			"vocab_1000": "1000単語 - 12トピック",
+			"grammar_basic": "文法",
+			"kanji_basic": "漢字"
+		}
+	}
+}

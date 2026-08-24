@@ -1,0 +1,16 @@
+{
+	"dashboard": {
+		"sections": {
+			"basic": "Cơ bản",
+			"vocabulary": "Từ vựng",
+			"grammar": "Ngữ pháp",
+			"kanji": "Kanji"
+		},
+		"items": {
+			"alphabet": "Bảng chữ cái",
+			"vocab_1000": "1000 Từ vựng - 12 Chủ đề",
+			"grammar_basic": "Ngữ pháp",
+			"kanji_basic": "Kanji"
+		}
+	}
+}

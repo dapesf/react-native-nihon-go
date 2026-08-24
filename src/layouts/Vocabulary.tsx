@@ -2,9 +2,8 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useLayoutEffect } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import VovabularyHeader from '../components/Vocabulary/VovabularyHeader';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../model/RootStackParamList';
+import { RootStackParamList } from '@/model/RootStackParamList';
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/build/Ionicons';
 
@@ -31,7 +30,7 @@ const Vocabulary = () => {
 						className="flex-row items-center bg-gray-100 px-3 py-1 rounded-lg"
 					>
 						<Ionicons name="arrow-back" size={18} color="black" />
-						<Text className="ml-1 text-sm font-medium">Back1</Text>
+						<Text className="ml-1 text-sm font-medium">Back</Text>
 					</Pressable>
 				</View>
 			)
@@ -45,7 +44,6 @@ const Vocabulary = () => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<View>
-				{/* <VovabularyHeader></VovabularyHeader> */}
 				<Text>Vocabulary</Text>
 			</View>
 		</SafeAreaView>

@@ -3,39 +3,12 @@ import { View, Text, SectionList, StyleSheet, TouchableOpacity } from 'react-nat
 import { useNavigation } from '@react-navigation/native';
 import MaterialCommunityIcons from '@expo/vector-icons/build/MaterialCommunityIcons';
 
-import { DashboardItem, DashboardSection } from '../../model/DashboardItem';
+import { DashboardItem, DashboardSection } from '@/model/DashboardItem';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../model/RootStackParamList';
+import { RootStackParamList } from '@/model/RootStackParamList';
+import { useTranslation } from 'react-i18next';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
-
-const DashboardConstantList: DashboardSection[] = [
-	{
-		title: 'Cơ bản',
-		data: [
-			{ id: '1', title: 'Bảng chữ cái', iconName: 'format-text', iconColor: '#E15241', navLink: 'VocabularyLayout' },
-		],
-	},
-	{
-		title: 'Từ vựng',
-		data: [
-			{ id: '2', title: '1000 Từ vựng - 12 Chủ đề', iconName: 'book-open-page-variant', iconColor: '#399E56', navLink: 'VocabularyLayout' },
-		],
-	},
-	{
-		title: 'Ngữ pháp',
-		data: [
-			{ id: '3', title: 'Ngữ pháp', iconName: 'format-list-bulleted', iconColor: '#399E56', navLink: 'VocabularyLayout' },
-		],
-	},
-	{
-		title: 'Kanji',
-		data: [
-			{ id: '4', title: 'Kanji', iconName: 'image-area', iconColor: '#399E56', navLink: 'VocabularyLayout' },
-		],
-	},
-];
-
 const SectionListItem: React.FC<{ item: DashboardItem; index: number, navigation: NavigationProp }> = ({ item, index, navigation }) => (
 	<TouchableOpacity
 		onPress={
@@ -65,6 +38,33 @@ const SectionHeader: React.FC<{ title: string }> = ({ title }) => (
 const DashboardMenuList = () => {
 
 	const navigation = useNavigation<NavigationProp>();
+	const { t, i18n } = useTranslation();
+	const DashboardConstantList: DashboardSection[] = [
+		{
+			title: t('dashboard.sections.basic'),
+			data: [
+				{ id: '1', title: t('dashboard.items.alphabet'), iconName: 'format-text', iconColor: '#E15241', navLink: 'VocabularyLayout' },
+			],
+		},
+		{
+			title: t('dashboard.sections.vocabulary'),
+			data: [
+				{ id: '2', title: t('dashboard.items.vocab_1000'), iconName: 'book-open-page-variant', iconColor: '#399E56', navLink: 'VocabularyLayout' },
+			],
+		},
+		{
+			title: t('dashboard.sections.grammar'),
+			data: [
+				{ id: '3', title: t('dashboard.items.grammar_basic'), iconName: 'format-list-bulleted', iconColor: '#399E56', navLink: 'VocabularyLayout' },
+			],
+		},
+		{
+			title: t('dashboard.sections.kanji'),
+			data: [
+				{ id: '4', title: t('dashboard.items.kanji_basic'), iconName: 'image-area', iconColor: '#399E56', navLink: 'VocabularyLayout' },
+			],
+		},
+	];
 
 	const GotoPages = (item: DashboardItem) => {
 		navigation.replace(item.navLink);

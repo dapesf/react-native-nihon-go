@@ -4,9 +4,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 //custom
-import { RootStackParamList } from './src/model/RootStackParamList';
-import DashboardScreen from './src/layouts/Dashboard';
-import Vocabulary from './src/layouts/Vocabulary';
+import '@/i18n';
+import { RootStackParamList } from '@/model/RootStackParamList';
+import DashboardScreen from '@/layouts/Dashboard';
+import Vocabulary from '@/layouts/Vocabulary';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

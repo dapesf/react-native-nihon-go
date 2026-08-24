@@ -3,8 +3,8 @@ import { StyleSheet } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";
 
 // custom
-import { DashboardHeader } from '../components/DashBoard/DashboardHeader';
-import { DashboardMenuList } from '../components/DashBoard/DashboardMenuList';
+import { DashboardHeader } from '@/components/DashBoard/DashboardHeader';
+import { DashboardMenuList } from '@/components/DashBoard/DashboardMenuList';
 
 const DashboardScreen: React.FC = () => {
 

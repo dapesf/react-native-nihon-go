@@ -1,6 +1,16 @@
 {
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "~assets/*": [
+        "./assets/*"
+      ],
+    },
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "extends": "expo/tsconfig.base"
 }
