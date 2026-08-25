@@ -5,34 +5,31 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '@/model/RootStackParamList';
 import { useNavigation } from '@react-navigation/native';
+import useAppNavigation from '@/hooks/useAppNavigation';
 import Ionicons from '@expo/vector-icons/build/Ionicons';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 const Vocabulary = () => {
 
 	const navigation = useNavigation<NavigationProp>();
+	const { goBack } = useAppNavigation();
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
 			title: "Vovabulary",
 			headerTitleAlign: "left",
-			// headerStyle: {
-			// 	elevation: 0,
-			// 	shadowOpacity: 0,
-			// 	borderBottomWidth: 0,
-			// },
+			headerShadowVisible: false,
+			headerStyle: {
+				backgroundColor: '#3F51B5',
+			},
 			headerLeft: () => (
-				<View className="flex-row items-center">
+				<>
 					<Pressable
-						onPress={
-							() => navigation.replace("DashboardLayout")
-						}
-						className="flex-row items-center bg-gray-100 px-3 py-1 rounded-lg"
+						onPress={() => goBack()}
 					>
 						<Ionicons name="arrow-back" size={18} color="black" />
-						<Text className="ml-1 text-sm font-medium">Back</Text>
 					</Pressable>
-				</View>
+				</>
 			)
 		});
 	}, []);

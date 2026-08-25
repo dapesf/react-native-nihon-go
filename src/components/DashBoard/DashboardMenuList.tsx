@@ -1,19 +1,16 @@
 import React from 'react'
 import { View, Text, SectionList, StyleSheet, TouchableOpacity } from 'react-native'
-import { useNavigation } from '@react-navigation/native';
 import MaterialCommunityIcons from '@expo/vector-icons/build/MaterialCommunityIcons';
 
 import { DashboardItem, DashboardSection } from '@/model/DashboardItem';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '@/model/RootStackParamList';
 import { useTranslation } from 'react-i18next';
+import useAppNavigation from '@/hooks/useAppNavigation';
 
-type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
-const SectionListItem: React.FC<{ item: DashboardItem; index: number, navigation: NavigationProp }> = ({ item, index, navigation }) => (
+const SectionListItem: React.FC<{ item: DashboardItem; index: number, goToStack: any }> = ({ item, index, goToStack }) => (
 	<TouchableOpacity
 		onPress={
 			() => {
-				navigation.replace(item.navLink)
+				goToStack(item.navLink)
 			}
 		}
 		style={[styles.itemContainer, { backgroundColor: index % 2 === 0 ? 'white' : '#F5F5F5' }]} // Xử lý sọc vằn
@@ -37,7 +34,7 @@ const SectionHeader: React.FC<{ title: string }> = ({ title }) => (
 
 const DashboardMenuList = () => {
 
-	const navigation = useNavigation<NavigationProp>();
+	const { goToStack } = useAppNavigation();
 	const { t, i18n } = useTranslation();
 	const DashboardConstantList: DashboardSection[] = [
 		{
@@ -66,16 +63,12 @@ const DashboardMenuList = () => {
 		},
 	];
 
-	const GotoPages = (item: DashboardItem) => {
-		navigation.replace(item.navLink);
-	};
-
 	return (
 		<>
 			<SectionList
 				sections={DashboardConstantList}
 				keyExtractor={(item) => item.id}
-				renderItem={({ item, index }) => <SectionListItem item={item} index={index} navigation={navigation} />}
+				renderItem={({ item, index }) => <SectionListItem item={item} index={index} goToStack={goToStack} />}
 				renderSectionHeader={({ section: { title } }) => <SectionHeader title={title} />}
 				stickySectionHeadersEnabled={false} // Tắt hiệu ứng sticky của header
 				ItemSeparatorComponent={() => <View style={styles.separator} />}
