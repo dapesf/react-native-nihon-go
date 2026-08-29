@@ -5,7 +5,6 @@ import MaterialCommunityIcons from '@expo/vector-icons/build/MaterialCommunityIc
 const DashboardHeader = () => {
 	return (
 		<View style={styles.header}>
-			<StatusBar barStyle="light-content" backgroundColor="#3F51B5" />
 			<Text style={styles.headerTitle}>Mikun - N5</Text>
 			<TouchableOpacity style={styles.headerRightIcon}>
 				<MaterialCommunityIcons name="book-open-variant" size={24} color="white" />

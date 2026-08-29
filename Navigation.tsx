@@ -1,6 +1,5 @@
 // base
-import { StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { StatusBar, StyleSheet, View } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 //custom
@@ -11,27 +10,40 @@ import Vocabulary from '@/layouts/Vocabulary';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-const Navigatior = () => {
+const Navigatior: React.FC = () => {
 	return (
-		<SafeAreaView style={styles.safeArea}>
+		<>
+			<StatusBar barStyle="light-content" backgroundColor="#3F51B5" />
 			<Stack.Navigator
-				screenOptions={{}}>
+				screenOptions={{
+					headerStyle: {
+						backgroundColor: '#3F51B5',
+					},
+				}}>
 				<Stack.Screen
 					name="DashboardLayout"
 					component={DashboardScreen}
 					options={{
-						headerShown: false
+						headerShown: true,
+						headerTitle: "Mikun - N5",
+						headerTintColor: 'white',
+						headerBackVisible: true,
+						headerBackButtonDisplayMode: 'minimal',
 					}} >
 				</Stack.Screen>
 				<Stack.Screen
 					name="VocabularyLayout"
 					component={Vocabulary}
 					options={{
-						title: "",
+						headerShown: true,
+						headerTitle: "Vocabulary",
+						headerTintColor: 'white',
+						headerBackVisible: true,
+						headerBackButtonDisplayMode: 'minimal',
 					}} >
 				</Stack.Screen>
 			</Stack.Navigator>
-		</SafeAreaView>
+		</>
 	)
 }
 
