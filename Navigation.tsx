@@ -6,7 +6,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import '@/i18n';
 import { RootStackParamList } from '@/model/RootStackParamList';
 import DashboardScreen from '@/layouts/Dashboard';
-import Vocabulary from '@/layouts/Vocabulary';
+import Vocabulary from '@/layouts/VocabularyGroup/Vocabulary';
+import KanjiList from '@/layouts/KanjiGroup/KanjiList';
+import KanjiInfo from '@/layouts/KanjiGroup/KanjiInfo';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -37,6 +39,28 @@ const Navigatior: React.FC = () => {
 					options={{
 						headerShown: true,
 						headerTitle: "Vocabulary",
+						headerTintColor: 'white',
+						headerBackVisible: true,
+						headerBackButtonDisplayMode: 'minimal',
+					}} >
+				</Stack.Screen>
+				<Stack.Screen
+					name="KanjiListLayout"
+					component={KanjiList}
+					options={{
+						headerShown: true,
+						headerTitle: "Kanji",
+						headerTintColor: 'white',
+						headerBackVisible: true,
+						headerBackButtonDisplayMode: 'minimal',
+					}} >
+				</Stack.Screen>
+				<Stack.Screen
+					name="KanjiInfoLayout"
+					component={KanjiInfo}
+					options={{
+						headerShown: true,
+						headerTitle: "",
 						headerTintColor: 'white',
 						headerBackVisible: true,
 						headerBackButtonDisplayMode: 'minimal',

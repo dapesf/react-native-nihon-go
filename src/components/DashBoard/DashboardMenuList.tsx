@@ -40,7 +40,7 @@ const DashboardMenuList = () => {
 		{
 			title: t('dashboard.sections.basic'),
 			data: [
-				{ id: '1', title: t('dashboard.items.alphabet'), iconName: 'format-text', iconColor: '#E15241', navLink: 'VocabularyLayout' },
+				{ id: '1', title: t('dashboard.items.alphabet'), iconName: 'format-text', iconColor: '#E15241', navLink: 'KanjiInfoLayout' },
 			],
 		},
 		{
@@ -58,7 +58,7 @@ const DashboardMenuList = () => {
 		{
 			title: t('dashboard.sections.kanji'),
 			data: [
-				{ id: '4', title: t('dashboard.items.kanji_basic'), iconName: 'image-area', iconColor: '#399E56', navLink: 'VocabularyLayout' },
+				{ id: '4', title: t('dashboard.items.kanji_basic'), iconName: 'image-area', iconColor: '#399E56', navLink: 'KanjiListLayout' },
 			],
 		},
 	];
