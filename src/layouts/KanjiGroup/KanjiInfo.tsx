@@ -4,41 +4,45 @@ import {
 	Text,
 	View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 import KanjiStrokeDiagram from "@/components/Kanji/KanjiStrokeDiagram";
 import KanjiActionButtons from "@/components/Kanji/KanjiActionButtons";
 import KanjiExample from "@/components/Kanji/KanjiExample";
 import KanjiInfoRow from "@/components/Kanji/KanjiInfoRow";
 
-export default function KanjiInfo() {
-	return (
-		<SafeAreaView
-			edges={["top"]}
-			className="flex-1 bg-white"
-		>
-			<ScrollView
-				className="flex-1"
-				showsVerticalScrollIndicator={false}
-			>
-				{/* =========================
-            STROKE DIAGRAM
-        ========================== */}
-				<KanjiStrokeDiagram />
+import { RouteProp, useRoute } from "@react-navigation/native";
+import { RootStackParamList } from "@/model/RootStackParamList";
+import { useGetKanjiStroke } from "@/hooks/useGetKanjiStroke";
 
-				{/* =========================
-            ACTION BUTTONS
-        ========================== */}
+export default function KanjiInfo() {
+
+	const route = useRoute<RouteProp<RootStackParamList, "KanjiInfoLayout">>();
+	const { kanji } = route.params;
+
+	const { kanjiData, loading, error } = useGetKanjiStroke(kanji);
+
+	if (loading || !kanjiData) {
+		return <View style={{ flex: 1 }} />;
+	}
+
+	return (
+		<View className="flex-1 bg-white">
+			<ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
+
+				{/* STROKE DIAGRAM */}
+				<KanjiStrokeDiagram
+					data={kanjiData}
+					size={280}
+				//activeStrokeIndex={currentStroke}
+				/>
+
+				{/* ACTION BUTTONS */}
 				<KanjiActionButtons />
 
-				{/* =========================
-            EXAMPLE / MNEMONIC
-        ========================== */}
+				{/* EXAMPLE / MNEMONIC */}
 				<KanjiExample />
 
-				{/* =========================
-            DESCRIPTION
-        ========================== */}
+				{/* DESCRIPTION */}
 				<View className="px-[24px] pt-[3px]">
 					<Text className="text-[15px] leading-[21px] text-[#222222]">
 						Đó là{" "}
@@ -57,9 +61,7 @@ export default function KanjiInfo() {
 					</Text>
 				</View>
 
-				{/* =========================
-            INFO
-        ========================== */}
+				{/* INFO */}
 				<View className="mt-[7px] px-[10px] pb-[20px]">
 					<KanjiInfoRow
 						label="Nghĩa"
@@ -68,7 +70,7 @@ export default function KanjiInfo() {
 
 					<KanjiInfoRow
 						label="Hán việt"
-						value="TRIỀU, TRIỀU"
+						value="TRIỀU"
 					/>
 
 					<KanjiInfoRow
@@ -84,6 +86,6 @@ export default function KanjiInfo() {
 					/>
 				</View>
 			</ScrollView>
-		</SafeAreaView>
+		</View>
 	);
 }

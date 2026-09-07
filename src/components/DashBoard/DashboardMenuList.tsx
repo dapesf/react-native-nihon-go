@@ -40,7 +40,7 @@ const DashboardMenuList = () => {
 		{
 			title: t('dashboard.sections.basic'),
 			data: [
-				{ id: '1', title: t('dashboard.items.alphabet'), iconName: 'format-text', iconColor: '#E15241', navLink: 'KanjiInfoLayout' },
+				{ id: '1', title: t('dashboard.items.alphabet'), iconName: 'format-text', iconColor: '#E15241', navLink: 'VocabularyLayout' },
 			],
 		},
 		{

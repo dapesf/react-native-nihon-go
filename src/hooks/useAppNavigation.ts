@@ -16,9 +16,9 @@ export const useAppNavigation = () => {
   // Các hàm điều hướng cụ thể
   const goToDashboard = () => navigation.navigate("DashboardLayout");
 
-  // const goToLesson = (lessonId: number, page: number) => {
-  //   navigation.navigate('LessonDetail', { lessonId, page });
-  // };
+  const goToKanjiInfo = (kanjiId: string) => {
+    navigation.navigate('KanjiInfoLayout', { kanji: kanjiId });
+  };
 
   const goToStack = (stack: keyof RootStackParamList) => navigation.navigate(stack);
 
@@ -35,7 +35,7 @@ export const useAppNavigation = () => {
     goBack
     , goToDashboard
     , goToStack
-    //, goToLesson
+    , goToKanjiInfo
     , resetToHome
     , navigation
   }

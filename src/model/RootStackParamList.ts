@@ -4,9 +4,7 @@ export type RootStackParamList = {
 	DashboardLayout: undefined;
 	VocabularyLayout: undefined;
 	KanjiListLayout: undefined;
-	KanjiInfoLayout: undefined;
-	// RangeOfMotion: { title: string };
-	// RangeOfMotionSummary: { key: string };
+	KanjiInfoLayout: { kanji: string };
 };
 
 export type AppNavigationProp = NativeStackNavigationProp<RootStackParamList>;

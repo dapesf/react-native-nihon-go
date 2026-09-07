@@ -36,35 +36,35 @@ const Navigatior: React.FC = () => {
 				<Stack.Screen
 					name="VocabularyLayout"
 					component={Vocabulary}
-					options={{
+					options={({ route }) => ({
 						headerShown: true,
 						headerTitle: "Vocabulary",
 						headerTintColor: 'white',
 						headerBackVisible: true,
 						headerBackButtonDisplayMode: 'minimal',
-					}} >
+					})}>
 				</Stack.Screen>
 				<Stack.Screen
 					name="KanjiListLayout"
 					component={KanjiList}
-					options={{
+					options={({ route }) => ({
 						headerShown: true,
 						headerTitle: "Kanji",
 						headerTintColor: 'white',
 						headerBackVisible: true,
 						headerBackButtonDisplayMode: 'minimal',
-					}} >
+					})}>
 				</Stack.Screen>
 				<Stack.Screen
 					name="KanjiInfoLayout"
 					component={KanjiInfo}
-					options={{
+					options={({ route }) => ({
 						headerShown: true,
-						headerTitle: "",
+						headerTitle: route.params?.kanji ?? 'Default Title',
 						headerTintColor: 'white',
 						headerBackVisible: true,
 						headerBackButtonDisplayMode: 'minimal',
-					}} >
+					})}>
 				</Stack.Screen>
 			</Stack.Navigator>
 		</>
