@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import Svg, { Path, Text as SvgText, G, Line } from 'react-native-svg';
 import { KanjiDetail } from "@/model/KanjiLayout/Kanji";
+
+import { AnimatedKanjiStroke } from '@/components/@ComponentCommon/AnimatedKanjiStroke'
 
 // Mảng màu chuẩn cho từng nét (tự động quay vòng nếu số nét > số màu)
 const DEFAULT_STROKE_COLORS = [
@@ -24,6 +26,15 @@ const KanjiStrokeDiagram: React.FC<KanjiViewerProps> = ({
 	showNumbers = true,
 	activeStrokeIndex = null,
 }) => {
+
+	// vẽ lại lần nữa
+	//const [isAnimating, setIsAnimating] = useState(true);
+
+	// const handleReplay = () => {
+	// 	setIsAnimating(false);
+	// 	setTimeout(() => setIsAnimating(true), 50);
+	// };
+
 	return (
 		<View className="relative w-full bg-white center w-80 m-auto mt-5" style={[styles.container]}>
 			<Svg viewBox="0 0 109 109">
@@ -58,15 +69,14 @@ const KanjiStrokeDiagram: React.FC<KanjiViewerProps> = ({
 						const isDimmed = activeStrokeIndex !== null && !isActive;
 
 						return (
-							<Path
+							<AnimatedKanjiStroke
 								key={stroke.id || `stroke-${index}`}
 								d={stroke.d}
-								fill="none"
 								stroke={isActive ? '#FF0000' : baseColor}
 								strokeWidth={isActive ? 4 : 3}
-								strokeLinecap="round"
-								strokeLinejoin="round"
 								opacity={isDimmed ? 0.2 : 1} // Làm mờ các nét khác nếu đang active 1 nét
+								index={index}
+								isAnimating={true}
 							/>
 						);
 					})}
