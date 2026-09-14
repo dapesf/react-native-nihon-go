@@ -4,6 +4,7 @@ export type RootStackParamList = {
 	DashboardLayout: undefined;
 	VocabularyLayout: undefined;
 	KanjiListLayout: undefined;
+	ResetDatabaseLayout: undefined;
 	KanjiInfoLayout: { kanji: string };
 };
 

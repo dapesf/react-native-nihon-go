@@ -6,9 +6,11 @@ interface RawKanjiRow {
 	character: string;
 	strokes: string;
 	numbers: string;
+	readings_on: string;
+	readings_kun: string;
 }
 
-export const useGetKanjiStroke = (char: string) => {
+export const useGetKanji = (char: string) => {
 	const db = useSQLiteContext();
 	const [kanjiData, setKanjiData] = useState<KanjiDetail | null>(null);
 	const [loading, setLoading] = useState<boolean>(true);
@@ -24,7 +26,21 @@ export const useGetKanjiStroke = (char: string) => {
 
 				// Query trực tiếp từ SQLite offline
 				const row = await db.getFirstAsync<RawKanjiRow>(
-					'SELECT character, strokes, numbers FROM kanji_stroke WHERE character = ?',
+					`SELECT 
+						id
+						, page
+						, unicode
+						, kanji
+						, han_viet
+						, meaning
+						, strokes_num
+						, jlpt_lvl
+						, readings_on
+						, readings_kun	
+						, component
+						, strokes 
+						, numbers 
+					FROM vw_kanji WHERE kanji = ?`,
 					[char]
 				);
 
@@ -37,6 +53,8 @@ export const useGetKanjiStroke = (char: string) => {
 						unicode: char.charCodeAt(0).toString(16).padStart(5, '0'),
 						strokes: parsedStrokes,
 						numbers: parsedNumbers,
+						readings_on: row.readings_on,
+						readings_kun: row.readings_kun,
 					});
 					setError(null);
 				} else if (isMounted) {

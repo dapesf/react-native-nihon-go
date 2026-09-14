@@ -12,14 +12,14 @@ import KanjiInfoRow from "@/components/Kanji/KanjiInfoRow";
 
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { RootStackParamList } from "@/model/RootStackParamList";
-import { useGetKanjiStroke } from "@/hooks/useGetKanjiStroke";
+import { useGetKanji } from "@/hooks/useGetKanji";
 
 export default function KanjiInfo() {
 
 	const route = useRoute<RouteProp<RootStackParamList, "KanjiInfoLayout">>();
 	const { kanji } = route.params;
 
-	const { kanjiData, loading, error } = useGetKanjiStroke(kanji);
+	const { kanjiData, loading, error } = useGetKanji(kanji);
 
 	if (loading || !kanjiData) {
 		return <View style={{ flex: 1 }} />;
@@ -75,13 +75,13 @@ export default function KanjiInfo() {
 
 					<KanjiInfoRow
 						label="Onyomi"
-						value="チョウ"
+						value={kanjiData.readings_on}
 						valueType="onyomi"
 					/>
 
 					<KanjiInfoRow
 						label="Kunyomi"
-						value="あさ"
+						value={kanjiData.readings_kun}
 						valueType="kunyomi"
 					/>
 				</View>

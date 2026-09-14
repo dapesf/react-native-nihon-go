@@ -2,7 +2,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Heart } from 'lucide-react-native';
 //
-import { KanjiItem } from '@/model/KanjiLayout/Kanji'
+import { KanjiInfo } from '@/model/KanjiLayout/Kanji'
 import useAppNavigation from '@/hooks/useAppNavigation';
 //
 import ReadingTag from '@/components/@ComponentCommon/ReadingTag'
@@ -11,7 +11,7 @@ const KanjiRow = ({
 	item,
 	index,
 }: {
-	item: KanjiItem;
+	item: KanjiInfo;
 	index: number;
 }) => {
 	const { goToKanjiInfo } = useAppNavigation();
@@ -49,22 +49,22 @@ const KanjiRow = ({
 					<View className="flex-1 pl-[5px] pr-[35px]">
 						{/* Readings */}
 						<View className="mb-[4px] flex-row items-center">
-							{item.onyomi && (
+							{item.readings_on && (
 								<ReadingTag type="onyomi">
-									{item.onyomi}
+									{item.readings_on}
 								</ReadingTag>
 							)}
 
-							{item.kunyomi && (
+							{item.readings_kun && (
 								<ReadingTag type="kunyomi">
-									{item.kunyomi}
+									{item.readings_kun}
 								</ReadingTag>
 							)}
 						</View>
 
 						{/* Sino Vietnamese */}
 						<Text className="text-[16px] leading-[20px] text-[#666666]">
-							{item.sinoVietnamese}
+							{item.han_viet}
 						</Text>
 
 						{/* Meaning */}

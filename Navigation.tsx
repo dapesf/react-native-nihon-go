@@ -9,6 +9,7 @@ import DashboardScreen from '@/layouts/Dashboard';
 import Vocabulary from '@/layouts/VocabularyGroup/Vocabulary';
 import KanjiList from '@/layouts/KanjiGroup/KanjiList';
 import KanjiInfo from '@/layouts/KanjiGroup/KanjiInfo';
+import ResetDatabase from '@/layouts/ResetDatabase';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -61,6 +62,17 @@ const Navigatior: React.FC = () => {
 					options={({ route }) => ({
 						headerShown: true,
 						headerTitle: route.params?.kanji ?? 'Default Title',
+						headerTintColor: 'white',
+						headerBackVisible: true,
+						headerBackButtonDisplayMode: 'minimal',
+					})}>
+				</Stack.Screen>
+				<Stack.Screen
+					name="ResetDatabaseLayout"
+					component={ResetDatabase}
+					options={({ route }) => ({
+						headerShown: true,
+						headerTitle: 'Reset Database',
 						headerTintColor: 'white',
 						headerBackVisible: true,
 						headerBackButtonDisplayMode: 'minimal',
