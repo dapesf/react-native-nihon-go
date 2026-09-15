@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
-import Svg, { Path, Text as SvgText, G, Line } from 'react-native-svg';
-import { KanjiDetail } from "@/model/KanjiLayout/Kanji";
+import Svg, { Text as SvgText, G, Line } from 'react-native-svg';
+import { KanjiViewerProps } from "@/model/KanjiLayout/Kanji";
 
 import { AnimatedKanjiStroke } from '@/components/@ComponentCommon/AnimatedKanjiStroke'
 
@@ -11,15 +11,7 @@ const DEFAULT_STROKE_COLORS = [
 	'#9C27B0', '#0288D1', '#2E7D32', '#D81B60', '#F57C00'
 ];
 
-interface KanjiViewerProps {
-	data: KanjiDetail;
-	size?: number;
-	strokeColors?: string[];
-	showNumbers?: boolean;
-	activeStrokeIndex?: number | null; // Nét đang được chọn/hoạt họa (-1 hoặc null nếu xem tất cả)
-}
-
-const KanjiStrokeDiagram: React.FC<KanjiViewerProps> = ({
+const KanjiDrawStroke: React.FC<KanjiViewerProps> = ({
 	data,
 	size = 285,
 	strokeColors = DEFAULT_STROKE_COLORS,
@@ -113,4 +105,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default KanjiStrokeDiagram
+export default KanjiDrawStroke

@@ -17,15 +17,9 @@ type Stroke = {
 	};
 };
 
-// type KanjiStroke = {
-// 	order: number;
-// 	path: string;
-// };
-
 type KanjiStrokeData = {
 	width: string;
 	height: string;
-	//strokes: KanjiStroke[];
 	strokes: string[];
 };
 
@@ -40,13 +34,29 @@ interface StrokeNumber {
 	y: number;
 }
 
+interface KanjiViewerProps {
+	data: KanjiDetail;
+	size?: number;
+	strokeColors?: string[];
+	showNumbers?: boolean;
+	activeStrokeIndex?: number | null; // Nét đang được chọn/hoạt họa (-1 hoặc null nếu xem tất cả)
+}
+
 interface KanjiDetail {
 	character: string;
 	unicode: string;
+	kanji: string;
+	han_viet: string;
+	meaning: string;
 	readings_on: string;
 	readings_kun: string;
+	strokes_num: number;
+	jlpt_lvl: number | null;
 	strokes: KanjiStroke[];
+	strokes_raw: string;
 	numbers: StrokeNumber[];
+	numbers_raw: string;
+	component: string[];
 }
 
 interface KanjiInfo {
@@ -65,4 +75,14 @@ interface KanjiInfo {
 	numbers: string | null;
 }
 
-export type { KanjiItem, Stroke, KanjiStroke, StrokeNumber, KanjiDetail, KanjiStrokeData, KanjiInfo }
+export type
+{
+	KanjiItem
+	, Stroke
+	, KanjiStroke
+	, StrokeNumber
+	, KanjiDetail
+	, KanjiStrokeData
+	, KanjiInfo
+	, KanjiViewerProps
+}

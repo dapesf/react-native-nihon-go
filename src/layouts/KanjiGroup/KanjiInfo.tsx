@@ -5,7 +5,7 @@ import {
 	View,
 } from "react-native";
 
-import KanjiStrokeDiagram from "@/components/Kanji/KanjiStrokeDiagram";
+import KanjiDrawStroke from "@/components/Kanji/KanjiDrawStroke";
 import KanjiActionButtons from "@/components/Kanji/KanjiActionButtons";
 import KanjiExample from "@/components/Kanji/KanjiExample";
 import KanjiInfoRow from "@/components/Kanji/KanjiInfoRow";
@@ -30,20 +30,22 @@ export default function KanjiInfo() {
 			<ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
 
 				{/* STROKE DIAGRAM */}
-				<KanjiStrokeDiagram
+				<KanjiDrawStroke
 					data={kanjiData}
 					size={280}
-				//activeStrokeIndex={currentStroke}
 				/>
 
 				{/* ACTION BUTTONS */}
 				<KanjiActionButtons />
 
 				{/* EXAMPLE / MNEMONIC */}
-				<KanjiExample />
+				<KanjiExample
+					kanji={kanjiData.kanji}
+					component={kanjiData.component}
+				/>
 
 				{/* DESCRIPTION */}
-				<View className="px-[24px] pt-[3px]">
+				{/* <View className="px-[24px] pt-[3px]">
 					<Text className="text-[15px] leading-[21px] text-[#222222]">
 						Đó là{" "}
 						<Text className="font-bold">
@@ -59,18 +61,24 @@ export default function KanjiInfo() {
 					<Text className="mt-[2px] text-[15px] text-[#222222]">
 						十月十日の朝です
 					</Text>
-				</View>
+				</View> */}
 
 				{/* INFO */}
 				<View className="mt-[7px] px-[10px] pb-[20px]">
 					<KanjiInfoRow
 						label="Nghĩa"
-						value="buổi sáng, triều đình"
+						value={kanjiData.meaning}
 					/>
 
 					<KanjiInfoRow
 						label="Hán việt"
-						value="TRIỀU"
+						value={kanjiData.han_viet}
+					/>
+
+					<KanjiInfoRow
+						label="Kunyomi"
+						value={kanjiData.readings_kun}
+						valueType="kunyomi"
 					/>
 
 					<KanjiInfoRow
@@ -80,10 +88,16 @@ export default function KanjiInfo() {
 					/>
 
 					<KanjiInfoRow
-						label="Kunyomi"
-						value={kanjiData.readings_kun}
-						valueType="kunyomi"
+						label="Số nét"
+						value={kanjiData.strokes_num}
 					/>
+
+					<KanjiInfoRow
+						label="JLPT"
+						value={kanjiData.jlpt_lvl}
+						valueType="onyomi"
+					/>
+
 				</View>
 			</ScrollView>
 		</View>

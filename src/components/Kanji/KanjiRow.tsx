@@ -49,17 +49,18 @@ const KanjiRow = ({
 					<View className="flex-1 pl-[5px] pr-[35px]">
 						{/* Readings */}
 						<View className="mb-[4px] flex-row items-center">
+							{item.readings_kun && (
+								<ReadingTag type="kunyomi">
+									{item.readings_kun}
+								</ReadingTag>
+							)}
+
 							{item.readings_on && (
 								<ReadingTag type="onyomi">
 									{item.readings_on}
 								</ReadingTag>
 							)}
 
-							{item.readings_kun && (
-								<ReadingTag type="kunyomi">
-									{item.readings_kun}
-								</ReadingTag>
-							)}
 						</View>
 
 						{/* Sino Vietnamese */}

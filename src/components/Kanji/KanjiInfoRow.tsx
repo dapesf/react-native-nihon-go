@@ -6,7 +6,7 @@ import {
 
 type KanjiInfoRowProps = {
 	label: string;
-	value: string;
+	value: any;
 	valueType?: "onyomi" | "kunyomi";
 };
 

@@ -6,6 +6,7 @@ import Animated, {
 	withDelay,
 	withTiming,
 	Easing,
+	useAnimatedReaction,
 } from 'react-native-reanimated';
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
@@ -18,13 +19,13 @@ interface AnimatedStrokeProps {
 	isAnimating: boolean;
 	stroke: string,
 	strokeWidth: number,
-	opacity: number
+	opacity: number,
 }
 
 export const AnimatedKanjiStroke: React.FC<AnimatedStrokeProps> = ({
 	d,
 	index,
-	durationPerStroke = 1000,
+	durationPerStroke = 500,
 	strokeLength = 300, // Độ dài khung viewBox tiêu chuẩn (thường 109x109 trong KanjiVG)
 	isAnimating,
 	stroke,
