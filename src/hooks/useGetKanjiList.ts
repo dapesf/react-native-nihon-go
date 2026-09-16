@@ -1,16 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useSQLiteContext } from 'expo-sqlite';
-import { KanjiDetail, KanjiStroke, StrokeNumber, KanjiInfo } from '@/model/KanjiLayout/Kanji'
+import { KanjiInfo } from '@/model/KanjiLayout/Kanji'
+import { DB_SEL_KANJI_LIST_PER_PAGE } from '@/db/dbQuery';
 
-// interface RawKanjiRow {
-// 	kanji: string;
-// 	strokes: string;
-// 	numbers: string;
-// 	readings_on: string;
-// 	readings_kun: string;
-// }
 
-export const useGetKanjiList = () => {
+export const useGetKanjiList = (page: number) => {
 	const db = useSQLiteContext();
 	const [kanjiData, setKanjiData] = useState<KanjiInfo[] | null>(null);
 	const [loading, setLoading] = useState<boolean>(true);
@@ -19,25 +13,11 @@ export const useGetKanjiList = () => {
 	useEffect(() => {
 		let isMounted = true;
 
+		setLoading(true);
+
 		const fetchKanji = async () => {
 			try {
-				const row = await db.getAllAsync<KanjiInfo>(
-					`SELECT 
-						id
-						, page
-						, unicode
-						, kanji
-						, han_viet
-						, meaning
-						, strokes_num
-						, jlpt_lvl
-						, readings_on
-						, readings_kun	
-						, component
-						, strokes 
-						, numbers 
-					FROM vw_kanji`
-				);
+				const row = await db.getAllAsync<KanjiInfo>(DB_SEL_KANJI_LIST_PER_PAGE, page);
 
 				if (row && isMounted) {
 					setKanjiData(row);
@@ -57,7 +37,7 @@ export const useGetKanjiList = () => {
 		return () => {
 			isMounted = false;
 		};
-	}, [db]);
+	}, [db, page]);
 
 	return { kanjiData, loading, error };
 };

@@ -8,23 +8,17 @@ import {
 import { Check, ChevronDown } from "lucide-react-native";
 
 type Page = {
-	id: string;
+	id: number;
 	title: string;
 };
 
 const defaultPages: Page[] = [
-	{
-		id: "page-1",
-		title: "Trang 1",
-	},
-	{
-		id: "page-2",
-		title: "Trang 2",
-	},
-	{
-		id: "page-3",
-		title: "Trang 3",
-	},
+	{ id: 1, title: "Trang 1", },
+	{ id: 2, title: "Trang 2", },
+	{ id: 3, title: "Trang 3", },
+	{ id: 4, title: "Trang 4", },
+	{ id: 5, title: "Trang 5", },
+	{ id: 6, title: "Trang 6", },
 ];
 
 type PageDropdownProps = {
