@@ -1,20 +1,16 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+} from 'react-native';
 
-const Vocabulary = () => {
-
-	return (
-		<View>
-			<Text>asdsdsdsd</Text>
-		</View>
-	)
+export default function Vocabulary() {
+  return (
+    <View>
+      <Text>Vocabulary</Text>
+    </View>
+  )
 }
 
-export default Vocabulary
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#EEEEEE',
-	},
-});
+const styles = StyleSheet.create({});

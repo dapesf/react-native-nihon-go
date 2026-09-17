@@ -10,6 +10,7 @@ import Vocabulary from '@/layouts/VocabularyGroup/Vocabulary';
 import KanjiList from '@/layouts/KanjiGroup/KanjiList';
 import KanjiInfo from '@/layouts/KanjiGroup/KanjiInfo';
 import ResetDatabase from '@/layouts/ResetDatabase';
+import Alphabet from '@/layouts/Alphabet/Alphabet';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -73,6 +74,17 @@ const Navigatior: React.FC = () => {
 					options={({ route }) => ({
 						headerShown: true,
 						headerTitle: 'Reset Database',
+						headerTintColor: 'white',
+						headerBackVisible: true,
+						headerBackButtonDisplayMode: 'minimal',
+					})}>
+				</Stack.Screen>
+				<Stack.Screen
+					name="AlphabetLayout"
+					component={Alphabet}
+					options={({ route }) => ({
+						headerShown: true,
+						headerTitle: 'Alphabet',
 						headerTintColor: 'white',
 						headerBackVisible: true,
 						headerBackButtonDisplayMode: 'minimal',
