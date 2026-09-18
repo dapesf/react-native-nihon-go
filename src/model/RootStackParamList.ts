@@ -2,7 +2,7 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 export type RootStackParamList = {
 	DashboardLayout: undefined;
-	VocabularyLayout: undefined;
+	GrammarLayout: undefined;
 	KanjiListLayout: undefined;
 	ResetDatabaseLayout: undefined;
 	KanjiInfoLayout: { kanji: string };

@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import '@/i18n';
 import { RootStackParamList } from '@/model/RootStackParamList';
 import DashboardScreen from '@/layouts/Dashboard';
-import Vocabulary from '@/layouts/VocabularyGroup/Vocabulary';
+import Grammar from '@/layouts/GrammarGroup/Grammar';
 import KanjiList from '@/layouts/KanjiGroup/KanjiList';
 import KanjiInfo from '@/layouts/KanjiGroup/KanjiInfo';
 import ResetDatabase from '@/layouts/ResetDatabase';
@@ -36,11 +36,11 @@ const Navigatior: React.FC = () => {
 					}} >
 				</Stack.Screen>
 				<Stack.Screen
-					name="VocabularyLayout"
-					component={Vocabulary}
+					name="GrammarLayout"
+					component={Grammar}
 					options={({ route }) => ({
 						headerShown: true,
-						headerTitle: "Vocabulary",
+						headerTitle: "Ngữ pháp",
 						headerTintColor: 'white',
 						headerBackVisible: true,
 						headerBackButtonDisplayMode: 'minimal',
@@ -51,7 +51,7 @@ const Navigatior: React.FC = () => {
 					component={KanjiList}
 					options={({ route }) => ({
 						headerShown: true,
-						headerTitle: "Kanji",
+						headerTitle: "Hán tự",
 						headerTintColor: 'white',
 						headerBackVisible: true,
 						headerBackButtonDisplayMode: 'minimal',
@@ -62,7 +62,7 @@ const Navigatior: React.FC = () => {
 					component={KanjiInfo}
 					options={({ route }) => ({
 						headerShown: true,
-						headerTitle: route.params?.kanji ?? 'Default Title',
+						headerTitle: route.params?.kanji ?? '',
 						headerTintColor: 'white',
 						headerBackVisible: true,
 						headerBackButtonDisplayMode: 'minimal',
@@ -84,7 +84,7 @@ const Navigatior: React.FC = () => {
 					component={Alphabet}
 					options={({ route }) => ({
 						headerShown: true,
-						headerTitle: 'Alphabet',
+						headerTitle: 'Bảng chữ cái',
 						headerTintColor: 'white',
 						headerBackVisible: true,
 						headerBackButtonDisplayMode: 'minimal',

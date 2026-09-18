@@ -6,9 +6,6 @@ const config = getDefaultConfig(__dirname);
 config.resolver.assetExts.push(
 	'db'
 	, 'sqlite'
-	, 'mjs'
-	, 'pdf'
-	, 'html'
 )
 
 module.exports = withNativeWind(config, {

@@ -46,13 +46,13 @@ const DashboardMenuList = () => {
 		{
 			title: t('dashboard.sections.vocabulary'),
 			data: [
-				{ id: '2', title: t('dashboard.items.vocab_1000'), iconName: 'book-open-page-variant', iconColor: '#399E56', navLink: 'VocabularyLayout' },
+				{ id: '2', title: t('dashboard.items.vocab_1000'), iconName: 'book-open-page-variant', iconColor: '#399E56', navLink: 'GrammarLayout' },
 			],
 		},
 		{
 			title: t('dashboard.sections.grammar'),
 			data: [
-				{ id: '3', title: t('dashboard.items.grammar_basic'), iconName: 'format-list-bulleted', iconColor: '#399E56', navLink: 'VocabularyLayout' },
+				{ id: '3', title: t('dashboard.items.grammar_basic'), iconName: 'format-list-bulleted', iconColor: '#399E56', navLink: 'GrammarLayout' },
 			],
 		},
 		{

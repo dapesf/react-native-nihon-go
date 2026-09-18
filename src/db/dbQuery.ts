@@ -1,4 +1,5 @@
-export const DB_SEL_KANJI_LIST_PER_PAGE = `SELECT 
+export const DB_SEL_KANJI_LIST_PER_PAGE =
+	`SELECT 
 	id
 	, page
 	, unicode
@@ -15,4 +16,17 @@ export const DB_SEL_KANJI_LIST_PER_PAGE = `SELECT
 FROM vw_kanji
 WHERE
 	page = ?
+`;
+
+export const DB_SEL_BUNBOU =
+	`SELECT 
+	id
+	, lvl
+	, structure
+	, meaning
+	, explanation
+	, examples
+	, note
+FROM ma_nihon_bunbou
+--WHERE lvl = '?'
 `;
