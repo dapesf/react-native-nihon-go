@@ -40,6 +40,7 @@ interface KanjiViewerProps {
 	strokeColors?: string[];
 	showNumbers?: boolean;
 	activeStrokeIndex?: number | null; // Nét đang được chọn/hoạt họa (-1 hoặc null nếu xem tất cả)
+	drawAgainSeq: number;
 }
 
 interface KanjiDetail {

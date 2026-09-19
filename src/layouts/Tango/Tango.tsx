@@ -1,37 +1,46 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, View } from "react-native";
+import { ActivityIndicator, FlatList, View, Text } from "react-native";
 //
 import TangoRow from "@/components/Tango/TangoRow";
-import KanjiPageIndex from "@/components/Kanji/KanjiPageIndex"
+import CommonDropDownListModal from "@/components/@ComponentCommon/CommonDropDownListModal";
 import { useGetTango } from "@/hooks/useGetTango";
 
 export default function Tango() {
 
-	const [page, setPage] = useState<number>(1);
-	const { tangoData } = useGetTango();
+	const [mondai, setMondai] = useState<string>("1");
+	const { tangoData, mondaiTangoData, loading } = useGetTango(mondai);
 
 	return (
 		<View className="flex-1 bg-white">
 
-			{/* <View className="bg-white px-4 py-2 z-10">
-				<KanjiPageIndex
-					onChange={(page) => {
-						setPage(page.id);
+			<View className="bg-white px-4 py-2 z-10">
+				<CommonDropDownListModal
+					options={mondaiTangoData}
+					onChange={(option) => {
+						setMondai(option.key);
 					}}
 				/>
-			</View> */}
-
-			<FlatList
-				data={tangoData}
-				keyExtractor={(item) => item.id}
-				renderItem={({ item, index }) => (
-					<TangoRow
-						item={item}
-						index={index}
-					/>
-				)}
-				showsVerticalScrollIndicator={false}
-			/>
+			</View>
+			{loading ? (
+				<View className="flex-1 justify-center items-center">
+					<ActivityIndicator size="large" color="#4F46E5" />
+					<Text className="mt-2 text-slate-500">Đang tải dữ liệu...</Text>
+				</View>
+			) : (
+				<FlatList
+					data={tangoData}
+					keyExtractor={(item) => item.id}
+					renderItem={({ item, index }) => (
+						<TangoRow
+							item={item}
+							index={index}
+						/>
+					)}
+					showsVerticalScrollIndicator={false}
+					initialNumToRender={15}
+					windowSize={5}
+				/>
+			)}
 			<View className="h-10"></View>
 		</View>
 	);

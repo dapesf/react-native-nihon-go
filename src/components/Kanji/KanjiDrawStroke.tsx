@@ -17,15 +17,8 @@ const KanjiDrawStroke: React.FC<KanjiViewerProps> = ({
 	strokeColors = DEFAULT_STROKE_COLORS,
 	showNumbers = true,
 	activeStrokeIndex = null,
+	drawAgainSeq,
 }) => {
-
-	// vẽ lại lần nữa
-	//const [isAnimating, setIsAnimating] = useState(true);
-
-	// const handleReplay = () => {
-	// 	setIsAnimating(false);
-	// 	setTimeout(() => setIsAnimating(true), 50);
-	// };
 
 	return (
 		<View className="relative w-full bg-white center w-80 m-auto mt-5" style={[styles.container]}>
@@ -69,28 +62,12 @@ const KanjiDrawStroke: React.FC<KanjiViewerProps> = ({
 								opacity={isDimmed ? 0.2 : 1} // Làm mờ các nét khác nếu đang active 1 nét
 								index={index}
 								isAnimating={true}
+								strokeNumber={data.numbers[index]}
+								drawAgainSeq={drawAgainSeq}
 							/>
 						);
 					})}
 				</G>
-
-				{/* 2. RENDER SỐ THỨ TỰ NẾT */}
-				{showNumbers && (
-					<G id="stroke-numbers">
-						{data.numbers.map((item) => (
-							<SvgText
-								key={`num-${item.number}`}
-								x={item.x}
-								y={item.y}
-								fill="#888888"
-								fontSize="6"
-								fontWeight="bold"
-							>
-								{item.number}
-							</SvgText>
-						))}
-					</G>
-				)}
 			</Svg>
 		</View>
 	);

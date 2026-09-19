@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import {
+	Pressable,
 	ScrollView,
 	Text,
 	View,
@@ -13,17 +14,23 @@ import KanjiInfoRow from "@/components/Kanji/KanjiInfoRow";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { RootStackParamList } from "@/model/RootStackParamList";
 import { useGetKanji } from "@/hooks/useGetKanji";
+import { Heart, RotateCcw } from "lucide-react-native";
 
 export default function KanjiInfo() {
 
 	const route = useRoute<RouteProp<RootStackParamList, "KanjiInfoLayout">>();
 	const { kanji } = route.params;
-
 	const { kanjiData, loading, error } = useGetKanji(kanji);
+
+	const [drawAgainSeq, setDrawAgainSeq] = useState<number>(0);
 
 	if (loading || !kanjiData) {
 		return <View style={{ flex: 1 }} />;
 	}
+
+	const handleRedraw = () => {
+		setDrawAgainSeq((prev) => prev + 1);
+	};
 
 	return (
 		<View className="flex-1 bg-white">
@@ -33,10 +40,39 @@ export default function KanjiInfo() {
 				<KanjiDrawStroke
 					data={kanjiData}
 					size={280}
+					drawAgainSeq={drawAgainSeq}
 				/>
 
 				{/* ACTION BUTTONS */}
-				<KanjiActionButtons />
+				<View className="flex-row items-center justify-between px-[7px]">
+					{/* Reset animation */}
+					<Pressable
+						className="h-[38px] w-[38px] items-center justify-center rounded-[3px] bg-[#4169ad]"
+						android_ripple={{
+							color: "#31578f",
+						}}
+					>
+						<Heart
+							size={21}
+							color="white"
+							strokeWidth={1.5}
+						/>
+					</Pressable>
+
+					<Pressable
+						onPress={handleRedraw}
+						className="h-[38px] w-[38px] items-center justify-center rounded-[3px] bg-[#4169ad]"
+						android_ripple={{
+							color: "#31578f",
+						}}
+					>
+						<RotateCcw
+							size={21}
+							color="white"
+							strokeWidth={1.7}
+						/>
+					</Pressable>
+				</View>
 
 				{/* EXAMPLE / MNEMONIC */}
 				<KanjiExample
