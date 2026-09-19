@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+	ActivityIndicator,
 	Pressable,
 	ScrollView,
 	Text,
@@ -25,7 +26,12 @@ export default function KanjiInfo() {
 	const [drawAgainSeq, setDrawAgainSeq] = useState<number>(0);
 
 	if (loading || !kanjiData) {
-		return <View style={{ flex: 1 }} />;
+		return (
+			<View className="flex-1 justify-center items-center">
+				<ActivityIndicator size="large" color="#4F46E5" />
+				<Text className="mt-2 text-slate-500">Đang tải dữ liệu...</Text>
+			</View>
+		);
 	}
 
 	const handleRedraw = () => {
@@ -34,6 +40,7 @@ export default function KanjiInfo() {
 
 	return (
 		<View className="flex-1 bg-white">
+
 			<ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
 
 				{/* STROKE DIAGRAM */}
