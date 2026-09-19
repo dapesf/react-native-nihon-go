@@ -46,7 +46,7 @@ const DashboardMenuList = () => {
 		{
 			title: t('dashboard.sections.vocabulary'),
 			data: [
-				{ id: '2', title: t('dashboard.items.vocab_1000'), iconName: 'book-open-page-variant', iconColor: '#399E56', navLink: 'GrammarLayout' },
+				{ id: '2', title: t('dashboard.items.vocab_1000'), iconName: 'book-open-page-variant', iconColor: '#399E56', navLink: 'TangoLayout' },
 			],
 		},
 		{

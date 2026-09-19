@@ -11,6 +11,7 @@ import KanjiList from '@/layouts/KanjiGroup/KanjiList';
 import KanjiInfo from '@/layouts/KanjiGroup/KanjiInfo';
 import ResetDatabase from '@/layouts/ResetDatabase';
 import Alphabet from '@/layouts/Alphabet/Alphabet';
+import Tango from '@/layouts/Tango/Tango';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -34,6 +35,17 @@ const Navigatior: React.FC = () => {
 						headerBackVisible: true,
 						headerBackButtonDisplayMode: 'minimal',
 					}} >
+				</Stack.Screen>
+				<Stack.Screen
+					name="TangoLayout"
+					component={Tango}
+					options={({ route }) => ({
+						headerShown: true,
+						headerTitle: 'Từ vựng',
+						headerTintColor: 'white',
+						headerBackVisible: true,
+						headerBackButtonDisplayMode: 'minimal',
+					})}>
 				</Stack.Screen>
 				<Stack.Screen
 					name="GrammarLayout"

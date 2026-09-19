@@ -7,6 +7,7 @@ export type RootStackParamList = {
 	ResetDatabaseLayout: undefined;
 	KanjiInfoLayout: { kanji: string };
 	AlphabetLayout: undefined;
+	TangoLayout: undefined;
 };
 
 export type AppNavigationProp = NativeStackNavigationProp<RootStackParamList>;

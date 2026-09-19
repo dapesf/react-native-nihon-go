@@ -30,3 +30,6 @@ export const DB_SEL_BUNBOU =
 FROM ma_nihon_bunbou
 --WHERE lvl = '?'
 `;
+
+export const DB_SEL_TANGO = `SELECT id, mondai, stt, meaning, hanviet, kanji, hiragana, lvl, int_mondai
+FROM ma_tango`

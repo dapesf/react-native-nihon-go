@@ -9,7 +9,7 @@ export default function App() {
   return (
     <SQLiteProvider
       databaseName="nihongo.db"
-      assetSource={{ assetId: require('@/db/kanji_20260918.db') }}
+      assetSource={{ assetId: require('@/db/kanji_20260919.db') }}
     >
       <NavigationContainer>
         <Navigatior></Navigatior>
