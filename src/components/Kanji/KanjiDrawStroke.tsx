@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Pressable } from 'react-native';
 import Svg, { Text as SvgText, G, Line } from 'react-native-svg';
 import { KanjiViewerProps } from "@/model/KanjiLayout/Kanji";
 
 import { AnimatedKanjiStroke } from '@/components/@ComponentCommon/AnimatedKanjiStroke'
+import { RotateCcw } from 'lucide-react-native';
 
 // Mảng màu chuẩn cho từng nét (tự động quay vòng nếu số nét > số màu)
 const DEFAULT_STROKE_COLORS = [
@@ -17,11 +18,31 @@ const KanjiDrawStroke: React.FC<KanjiViewerProps> = ({
 	strokeColors = DEFAULT_STROKE_COLORS,
 	showNumbers = true,
 	activeStrokeIndex = null,
-	drawAgainSeq,
 }) => {
 
+	const [drawAgainSeq, setDrawAgainSeq] = useState<number>(0);
+
+	const handleRedraw = () => {
+		setDrawAgainSeq((prev) => prev + 1);
+	};
+
 	return (
-		<View className="relative w-full bg-white center w-80 m-auto mt-5" style={[styles.container]}>
+		<View className="relative w-[90%] bg-white center w-80 m-auto mt-5" style={[styles.container]}>
+
+			<Pressable
+				onPress={handleRedraw}
+				className="absolute right-1 top-1 z-10 h-[38px] w-[38px] items-center justify-center rounded-[10px] bg-[#4169ad]"
+				android_ripple={{
+					color: "#31578f",
+				}}
+			>
+				<RotateCcw
+					size={21}
+					color="white"
+					strokeWidth={1.7}
+				/>
+			</Pressable>
+
 			<Svg viewBox="0 0 109 109">
 
 				{/* Center guide */}

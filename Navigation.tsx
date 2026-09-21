@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 //custom
 import '@/i18n';
+import MainTabNavigator from './MainTabNavigator';
 import { RootStackParamList } from '@/model/RootStackParamList';
 import DashboardScreen from '@/layouts/Dashboard';
 import Grammar from '@/layouts/GrammarGroup/Grammar';
@@ -25,6 +26,7 @@ const Navigatior: React.FC = () => {
 						backgroundColor: '#3F51B5',
 					},
 				}}>
+				<Stack.Screen name="MainTabs" component={MainTabNavigator} />
 				<Stack.Screen
 					name="DashboardLayout"
 					component={DashboardScreen}

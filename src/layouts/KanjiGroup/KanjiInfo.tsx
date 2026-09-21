@@ -23,8 +23,6 @@ export default function KanjiInfo() {
 	const { kanji } = route.params;
 	const { kanjiData, loading, error } = useGetKanji(kanji);
 
-	const [drawAgainSeq, setDrawAgainSeq] = useState<number>(0);
-
 	if (loading || !kanjiData) {
 		return (
 			<View className="flex-1 justify-center items-center">
@@ -33,10 +31,6 @@ export default function KanjiInfo() {
 			</View>
 		);
 	}
-
-	const handleRedraw = () => {
-		setDrawAgainSeq((prev) => prev + 1);
-	};
 
 	return (
 		<View className="flex-1 bg-white">
@@ -47,39 +41,7 @@ export default function KanjiInfo() {
 				<KanjiDrawStroke
 					data={kanjiData}
 					size={280}
-					drawAgainSeq={drawAgainSeq}
 				/>
-
-				{/* ACTION BUTTONS */}
-				<View className="flex-row items-center justify-between px-[7px]">
-					{/* Reset animation */}
-					<Pressable
-						className="h-[38px] w-[38px] items-center justify-center rounded-[3px] bg-[#4169ad]"
-						android_ripple={{
-							color: "#31578f",
-						}}
-					>
-						<Heart
-							size={21}
-							color="white"
-							strokeWidth={1.5}
-						/>
-					</Pressable>
-
-					<Pressable
-						onPress={handleRedraw}
-						className="h-[38px] w-[38px] items-center justify-center rounded-[3px] bg-[#4169ad]"
-						android_ripple={{
-							color: "#31578f",
-						}}
-					>
-						<RotateCcw
-							size={21}
-							color="white"
-							strokeWidth={1.7}
-						/>
-					</Pressable>
-				</View>
 
 				{/* EXAMPLE / MNEMONIC */}
 				<KanjiExample
