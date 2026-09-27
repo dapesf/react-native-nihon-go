@@ -4,13 +4,36 @@
 			"basic": "Cơ bản",
 			"vocabulary": "Từ vựng",
 			"grammar": "Ngữ pháp",
-			"kanji": "Kanji"
+			"kanji": "Hán tự"
 		},
 		"items": {
 			"alphabet": "Bảng chữ cái",
 			"vocab_1000": "Từ vựng",
 			"grammar_basic": "Ngữ pháp",
-			"kanji_basic": "Kanji"
+			"grammar_donzu": "Ngữ pháp Đông Du",
+			"kanji_basic": "Hán tự"
 		}
+	},
+	"common": {
+		"loading_data": "Đang tải dữ liệu...",
+		"explanation": "Giải thích:",
+		"example": "Ví dụ:",
+		"note": "Chú ý:",
+		"select_structure": "Chọn cấu trúc",
+		"error_reading_sqlite": "Lỗi đọc dữ liệu SQLite"
+	},
+	"grammar": {
+		"no_data": "Không có dữ liệu ngữ pháp."
+	},
+	"kanji": {
+		"that_is": "Đó là",
+		"morning": "buổi sáng",
+		"of_october_10": "của ngày 10 tháng 10(+十月十日).",
+		"meaning": "Nghĩa",
+		"onyomi_kunyomi": "Hán việt",
+		"strokes_count": "Số nét"
+	},
+	"tabs": {
+		"review": "Ôn tập"
 	}
 }

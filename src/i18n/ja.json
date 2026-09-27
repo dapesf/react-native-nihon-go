@@ -10,7 +10,30 @@
 			"alphabet": "五十音",
 			"vocab_1000": "単語",
 			"grammar_basic": "文法",
+			"grammar_donzu": "東遊文法",
 			"kanji_basic": "漢字"
 		}
+	},
+	"common": {
+		"loading_data": "データを読み込み中...",
+		"explanation": "解説：",
+		"example": "例文：",
+		"note": "注意：",
+		"select_structure": "文型を選択",
+		"error_reading_sqlite": "SQLiteデータの読み込みエラー"
+	},
+	"grammar": {
+		"no_data": "文法データがありません。"
+	},
+	"kanji": {
+		"that_is": "それは",
+		"morning": "朝",
+		"of_october_10": "の10月10日です（+十月十日）。",
+		"meaning": "意味",
+		"onyomi_kunyomi": "漢越音",
+		"strokes_count": "画数"
+	},
+	"tabs": {
+		"review": "復習"
 	}
 }

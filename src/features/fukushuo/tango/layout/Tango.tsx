@@ -4,11 +4,13 @@ import { ActivityIndicator, FlatList, View, Text } from "react-native";
 import TangoRow from "../components/TangoRow";
 import CommonDropDownListModal from "@/shared/components/CommonDropDownListModal";
 import { useGetTango } from "../hooks/useGetTango";
+import { useTranslation } from "react-i18next";
 
 export default function Tango() {
 
 	const [mondai, setMondai] = useState<string>("1");
 	const { tangoData, mondaiTangoData, loading } = useGetTango(mondai);
+	const { t } = useTranslation();
 
 	return (
 		<View className="flex-1 bg-white">
@@ -24,7 +26,7 @@ export default function Tango() {
 			{loading ? (
 				<View className="flex-1 justify-center items-center">
 					<ActivityIndicator size="large" color="#4F46E5" />
-					<Text className="mt-2 text-slate-500">Đang tải dữ liệu...</Text>
+					<Text className="mt-2 text-slate-500">{t('common.loading_data')}</Text>
 				</View>
 			) : (
 				<FlatList

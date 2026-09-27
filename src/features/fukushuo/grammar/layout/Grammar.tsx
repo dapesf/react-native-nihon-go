@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, ActivityIndicator, Modal, FlatList } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useTranslation } from 'react-i18next';
 import { Example, BunbouRecord } from '../type';
 import { useGetBunBou } from '../hooks/useGetGrammar';
 
 export default function GrammarScreen() {
+  const { t } = useTranslation();
   const { bunbouData } = useGetBunBou('n5');
   const [grammars, setGrammars] = useState<BunbouRecord[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -42,7 +44,7 @@ export default function GrammarScreen() {
   if (grammars.length === 0) {
     return (
       <View className="flex-1 justify-center items-center bg-white">
-        <Text className="text-gray-500">Không có dữ liệu ngữ pháp.</Text>
+        <Text className="text-gray-500">{t('grammar.no_data')}</Text>
       </View>
     );
   }
@@ -80,7 +82,7 @@ export default function GrammarScreen() {
         {currentItem.explanation && (
           <View className="mb-6">
             <View className="self-start border-b-2 border-blue-600 mb-3">
-              <Text className="text-blue-600 text-2xl font-semibold pb-1">Giải thích:</Text>
+              <Text className="text-blue-600 text-2xl font-semibold pb-1">{t('common.explanation')}</Text>
             </View>
             <Text className="text-gray-800 text-lg leading-7">
               {currentItem.explanation}
@@ -92,7 +94,7 @@ export default function GrammarScreen() {
         {examplesList.length > 0 && (
           <View className="mb-6">
             <View className="self-start border-b-2 border-blue-600 mb-3">
-              <Text className="text-blue-600 text-2xl font-semibold pb-1">Ví dụ:</Text>
+              <Text className="text-blue-600 text-2xl font-semibold pb-1">{t('common.example')}</Text>
             </View>
             {examplesList.map((ex, index) => (
               <View key={index} className="mb-4">
@@ -111,7 +113,7 @@ export default function GrammarScreen() {
         {currentItem.note && (
           <View className="mb-6">
             <View className="self-start border-b-2 border-blue-600 mb-3">
-              <Text className="text-blue-600 text-2xl font-semibold pb-1">Chú ý:</Text>
+              <Text className="text-blue-600 text-2xl font-semibold pb-1">{t('common.note')}</Text>
             </View>
             <Text className="text-gray-800 text-lg leading-7">
               {currentItem.note}
@@ -129,7 +131,7 @@ export default function GrammarScreen() {
         >
           <View className="bg-white w-5/6 max-h-[70%] rounded-xl shadow-lg overflow-hidden">
             <View className="p-4 border-b border-gray-200 bg-gray-50 flex-row justify-between items-center">
-              <Text className="text-lg font-bold text-gray-800">Chọn cấu trúc</Text>
+              <Text className="text-lg font-bold text-gray-800">{t('common.select_structure')}</Text>
               <TouchableOpacity onPress={() => setIsDropdownOpen(false)}>
                 <Ionicons name="close" size={24} color="#4b5563" />
               </TouchableOpacity>

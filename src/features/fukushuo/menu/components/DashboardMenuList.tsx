@@ -5,6 +5,7 @@ import MaterialCommunityIcons from '@expo/vector-icons/build/MaterialCommunityIc
 import { DashboardItem, DashboardSection } from '../type';
 import { useTranslation } from 'react-i18next';
 import useAppNavigation from '@/shared/hooks/useAppNavigation';
+import { APP_COLORS } from '@/shared/constants/colors';
 
 const SectionListItem: React.FC<{ item: DashboardItem; index: number, goToStack: any }> = ({ item, index, goToStack }) => (
 	<TouchableOpacity
@@ -16,7 +17,7 @@ const SectionListItem: React.FC<{ item: DashboardItem; index: number, goToStack:
 		style={[styles.itemContainer, { backgroundColor: index % 2 === 0 ? 'white' : '#F5F5F5' }]} // Xử lý sọc vằn
 	>
 		<View style={styles.iconContainer}>
-			{item.iconName === 'format-text' ? ( // Xử lý đặc biệt cho icon 'A'
+			{item.iconName === 'format-text' ? ( // Giữ lại dự phòng nếu bạn thích dùng chữ A như cũ
 				<Text style={[styles.specialIcon, { color: item.iconColor }]}>A</Text>
 			) : (
 				<MaterialCommunityIcons name={item.iconName} size={28} color={item.iconColor} />
@@ -40,31 +41,32 @@ const DashboardMenuList = () => {
 		{
 			title: t('dashboard.sections.basic'),
 			data: [
-				{ id: '1', title: t('dashboard.items.alphabet'), iconName: 'format-text', iconColor: '#E15241', navLink: 'AlphabetLayout' },
+				{ id: '1', title: t('dashboard.items.alphabet'), iconName: 'syllabary-hiragana', iconColor: APP_COLORS.menuAlphabet, navLink: 'AlphabetLayout' },
 			],
 		},
 		{
 			title: t('dashboard.sections.vocabulary'),
 			data: [
-				{ id: '2', title: t('dashboard.items.vocab_1000'), iconName: 'book-open-page-variant', iconColor: '#399E56', navLink: 'TangoLayout' },
+				{ id: '2', title: t('dashboard.items.vocab_1000'), iconName: 'cards', iconColor: APP_COLORS.menuVocab, navLink: 'TangoLayout' },
 			],
 		},
 		{
 			title: t('dashboard.sections.grammar'),
 			data: [
-				{ id: '3', title: t('dashboard.items.grammar_basic'), iconName: 'format-list-bulleted', iconColor: '#399E56', navLink: 'GrammarLayout' },
+				{ id: '3', title: t('dashboard.items.grammar_basic'), iconName: 'puzzle-outline', iconColor: APP_COLORS.menuGrammarBasic, navLink: 'GrammarLayout' },
+				{ id: '3_1', title: t('dashboard.items.grammar_donzu'), iconName: 'school-outline', iconColor: APP_COLORS.menuGrammarDonzu, navLink: 'DonZuGrammarLayout' },
 			],
 		},
 		{
 			title: t('dashboard.sections.kanji'),
 			data: [
-				{ id: '4', title: t('dashboard.items.kanji_basic'), iconName: 'image-area', iconColor: '#399E56', navLink: 'KanjiListLayout' },
+				{ id: '4', title: t('dashboard.items.kanji_basic'), iconName: 'ideogram-cjk', iconColor: APP_COLORS.menuKanji, navLink: 'KanjiListLayout' },
 			],
 		},
 		{
 			title: "Reset Database",
 			data: [
-				{ id: '5', title: "Reset Database", iconName: 'image-area', iconColor: '#399E56', navLink: 'ResetDatabaseLayout' },
+				{ id: '5', title: "Reset Database", iconName: 'database-refresh', iconColor: APP_COLORS.danger, navLink: 'ResetDatabaseLayout' },
 			],
 		},
 	];

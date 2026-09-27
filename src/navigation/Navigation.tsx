@@ -14,17 +14,23 @@ import KanjiInfo from '@/features/fukushuo/kanji/layout/KanjiInfo';
 import ResetDatabase from '@/features/other/ResetDatabase';
 import Alphabet from '@/features/fukushuo/alphabet/layout/Alphabet';
 import Tango from '@/features/fukushuo/tango/layout/Tango';
+import DonZuGrammarScreen from '@/features/fukushuo/donzu-grammar/layout/DonZuGrammar';
+import DonZuLessonDetailScreen from '@/features/fukushuo/donzu-grammar/layout/DonZuLessonDetail';
+import { useTranslation } from 'react-i18next';
+import LanguageToggle from '@/shared/components/LanguageToggle';
+import { APP_COLORS } from '@/shared/constants/colors';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const Navigatior: React.FC = () => {
+	const { t } = useTranslation();
 	return (
 		<>
-			<StatusBar barStyle="light-content" backgroundColor="#3F51B5" />
+			<StatusBar barStyle="light-content" backgroundColor={APP_COLORS.primary} />
 			<Stack.Navigator
 				screenOptions={{
 					headerStyle: {
-						backgroundColor: '#3F51B5',
+						backgroundColor: APP_COLORS.primary,
 					},
 				}}>
 				<Stack.Screen
@@ -36,6 +42,7 @@ const Navigatior: React.FC = () => {
 						headerTintColor: 'white',
 						headerBackVisible: true,
 						headerBackButtonDisplayMode: 'minimal',
+						headerRight: LanguageToggle,
 					}} >
 				</Stack.Screen>
 				<Stack.Screen
@@ -47,6 +54,7 @@ const Navigatior: React.FC = () => {
 						headerTintColor: 'white',
 						headerBackVisible: true,
 						headerBackButtonDisplayMode: 'minimal',
+						headerRight: LanguageToggle,
 					}} >
 				</Stack.Screen>
 				<Stack.Screen
@@ -54,7 +62,7 @@ const Navigatior: React.FC = () => {
 					component={Tango}
 					options={({ route }) => ({
 						headerShown: true,
-						headerTitle: 'Từ vựng',
+						headerTitle: t('dashboard.items.vocab_1000'),
 						headerTintColor: 'white',
 						headerBackVisible: true,
 						headerBackButtonDisplayMode: 'minimal',
@@ -65,7 +73,29 @@ const Navigatior: React.FC = () => {
 					component={Grammar}
 					options={({ route }) => ({
 						headerShown: true,
-						headerTitle: "Ngữ pháp",
+						headerTitle: t('dashboard.items.grammar_basic'),
+						headerTintColor: 'white',
+						headerBackVisible: true,
+						headerBackButtonDisplayMode: 'minimal',
+					})}>
+				</Stack.Screen>
+				<Stack.Screen
+					name="DonZuGrammarLayout"
+					component={DonZuGrammarScreen}
+					options={({ route }) => ({
+						headerShown: true,
+						headerTitle: t('dashboard.items.grammar_donzu'),
+						headerTintColor: 'white',
+						headerBackVisible: true,
+						headerBackButtonDisplayMode: 'minimal',
+					})}>
+				</Stack.Screen>
+				<Stack.Screen
+					name="DonZuLessonDetailLayout"
+					component={DonZuLessonDetailScreen}
+					options={({ route }) => ({
+						headerShown: true,
+						headerTitle: route.params?.lesson_title ?? 'Chi tiết',
 						headerTintColor: 'white',
 						headerBackVisible: true,
 						headerBackButtonDisplayMode: 'minimal',
@@ -76,7 +106,7 @@ const Navigatior: React.FC = () => {
 					component={KanjiList}
 					options={({ route }) => ({
 						headerShown: true,
-						headerTitle: "Hán tự",
+						headerTitle: t('dashboard.items.kanji_basic'),
 						headerTintColor: 'white',
 						headerBackVisible: true,
 						headerBackButtonDisplayMode: 'minimal',
@@ -109,7 +139,7 @@ const Navigatior: React.FC = () => {
 					component={Alphabet}
 					options={({ route }) => ({
 						headerShown: true,
-						headerTitle: 'Bảng chữ cái',
+						headerTitle: t('dashboard.items.alphabet'),
 						headerTintColor: 'white',
 						headerBackVisible: true,
 						headerBackButtonDisplayMode: 'minimal',

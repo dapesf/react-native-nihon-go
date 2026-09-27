@@ -16,18 +16,20 @@ import { RouteProp, useRoute } from "@react-navigation/native";
 import { RootStackParamList } from "@/shared/type";
 import { useGetKanji } from "../hooks/useGetKanji";
 import { Heart, RotateCcw } from "lucide-react-native";
+import { useTranslation } from "react-i18next";
 
 export default function KanjiInfo() {
 
 	const route = useRoute<RouteProp<RootStackParamList, "KanjiInfoLayout">>();
 	const { kanji } = route.params;
 	const { kanjiData, loading, error } = useGetKanji(kanji);
+	const { t } = useTranslation();
 
 	if (loading || !kanjiData) {
 		return (
 			<View className="flex-1 justify-center items-center">
 				<ActivityIndicator size="large" color="#4F46E5" />
-				<Text className="mt-2 text-slate-500">Đang tải dữ liệu...</Text>
+				<Text className="mt-2 text-slate-500">{t('common.loading_data')}</Text>
 			</View>
 		);
 	}
@@ -71,12 +73,12 @@ export default function KanjiInfo() {
 				{/* INFO */}
 				<View className="mt-[7px] px-[10px] pb-[20px]">
 					<KanjiInfoRow
-						label="Nghĩa"
+						label={t('kanji.meaning')}
 						value={kanjiData.meaning}
 					/>
 
 					<KanjiInfoRow
-						label="Hán việt"
+						label={t('kanji.onyomi_kunyomi')}
 						value={kanjiData.han_viet}
 					/>
 
@@ -93,7 +95,7 @@ export default function KanjiInfo() {
 					/>
 
 					<KanjiInfoRow
-						label="Số nét"
+						label={t('kanji.strokes_count')}
 						value={kanjiData.strokes_num}
 					/>
 

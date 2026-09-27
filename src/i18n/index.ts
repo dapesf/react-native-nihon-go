@@ -1,6 +1,7 @@
 import i18n, { InitOptions } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import * as Localization from 'expo-localization';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import vi from './vi.json'
 import ja from './ja.json';
@@ -22,7 +23,7 @@ const getDeviceLanguage = () => {
 
 const i18nOptions: InitOptions = {
 	resources,
-	lng: getDeviceLanguage(),
+	lng: 'vi', // getDeviceLanguage(), // Tạm thời set mặc định tiếng Việt
 	fallbackLng: 'vi',
 	interpolation: {
 		escapeValue: false, // React đã tự động chống XSS
@@ -32,5 +33,12 @@ const i18nOptions: InitOptions = {
 i18n
 	.use(initReactI18next)
 	.init(i18nOptions);
+
+// Khôi phục ngôn ngữ đã lưu từ AsyncStorage
+// AsyncStorage.getItem('@app_language').then((savedLng) => {
+// 	if (savedLng) {
+// 		i18n.changeLanguage(savedLng);
+// 	}
+// }).catch((err) => console.log('Lỗi khi đọc ngôn ngữ từ AsyncStorage', err));
 
 export default i18n;

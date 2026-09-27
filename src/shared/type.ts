@@ -26,6 +26,8 @@ export type RootStackParamList = {
 	MainTabs: undefined;
 	DashboardLayout: undefined;
 	GrammarLayout: undefined;
+	DonZuGrammarLayout: undefined;
+	DonZuLessonDetailLayout: { lesson_number: number, lesson_title: string };
 	KanjiListLayout: undefined;
 	ResetDatabaseLayout: undefined;
 	KanjiInfoLayout: { kanji: string };

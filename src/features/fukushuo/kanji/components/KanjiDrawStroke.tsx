@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Pressable } from 'react-native';
 import Svg, { Text as SvgText, G, Line } from 'react-native-svg';
-import { KanjiViewerProps } from "@/model/KanjiLayout/Kanji";
+import { KanjiViewerProps } from "../type";
 
 import { AnimatedKanjiStroke } from '@/shared/components/AnimatedKanjiStroke'
 import { RotateCcw } from 'lucide-react-native';
@@ -25,6 +25,10 @@ const KanjiDrawStroke: React.FC<KanjiViewerProps> = ({
 	const handleRedraw = () => {
 		setDrawAgainSeq((prev) => prev + 1);
 	};
+
+	if (!data || !data.strokes || !Array.isArray(data.strokes)) {
+		return null;
+	}
 
 	return (
 		<View className="relative w-[90%] bg-white center w-80 m-auto mt-5" style={[styles.container]}>
@@ -68,7 +72,7 @@ const KanjiDrawStroke: React.FC<KanjiViewerProps> = ({
 
 				{/* 1. RENDER CÁC NÉT (PATHS) THEO THỨ TỰ */}
 				<G id="strokes">
-					{data.strokes.map((stroke, index) => {
+					{data.strokes.map((stroke: any, index: number) => {
 						// Xác định màu cho từng nét
 						const baseColor = strokeColors[index % strokeColors.length];
 						const isActive = activeStrokeIndex === index;
@@ -83,7 +87,7 @@ const KanjiDrawStroke: React.FC<KanjiViewerProps> = ({
 								opacity={isDimmed ? 0.2 : 1} // Làm mờ các nét khác nếu đang active 1 nét
 								index={index}
 								isAnimating={true}
-								strokeNumber={data.numbers[index]}
+								strokeNumber={data.numbers?.[index]}
 								drawAgainSeq={drawAgainSeq}
 							/>
 						);

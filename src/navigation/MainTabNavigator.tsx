@@ -1,10 +1,11 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
+import { useTranslation } from 'react-i18next';
 
 // Import các màn hình của bạn
 import DashboardScreen from '@/features/fukushuo/menu/layout/Dashboard';
-import CommingSoo from '@/features/renshuo/commingSoo';
+import CommingSoo from '@/features/renshuo/CommingSoo';
 
 // 1. Định nghĩa kiểu dữ liệu cho các Tab
 import { MainTabParamList } from '@/shared/type';
@@ -12,6 +13,7 @@ import { MainTabParamList } from '@/shared/type';
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
 export default function MainTabNavigator() {
+	const { t } = useTranslation();
 	return (
 		<Tab.Navigator
 			screenOptions={({ route }) => ({
@@ -50,7 +52,7 @@ export default function MainTabNavigator() {
 			<Tab.Screen
 				name="Home"
 				component={DashboardScreen}
-				options={{ tabBarLabel: 'Ôn tập' }}
+				options={{ tabBarLabel: t('tabs.review') }}
 			/>
 			<Tab.Screen
 				name="CommingSoo"
