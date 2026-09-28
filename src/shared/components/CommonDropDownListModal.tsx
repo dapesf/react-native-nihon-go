@@ -1,23 +1,17 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
 	Modal,
 	Pressable,
-	ScrollView,
+	FlatList,
 	Text,
 	TouchableOpacity,
 	View,
 } from "react-native";
 // import { Check, ChevronDown } from "lucide-react-native";
-import type { Option, PageDropdownProps } from "@/model/Common/DropDownModel";
+import type { Option, PageDropdownProps } from "@/shared/type";
 import Ionicons from "@expo/vector-icons/build/Ionicons";
 
 const defaultPages: Option[] = [
-	{ key: 1, value: "Trang 1", },
-	{ key: 2, value: "Trang 2", },
-	{ key: 3, value: "Trang 3", },
-	{ key: 4, value: "Trang 4", },
-	{ key: 5, value: "Trang 5", },
-	{ key: 6, value: "Trang 6", },
 ];
 
 export default function CommonDropDownListModal({
@@ -31,6 +25,19 @@ export default function CommonDropDownListModal({
 	const [selectedId, setSelectedId] = useState(
 		value ?? options[0]?.key
 	);
+	const flatListRef = useRef<FlatList>(null);
+
+	useEffect(() => {
+		if (isDropdownOpen && flatListRef.current && options.length > 0) {
+			setTimeout(() => {
+				flatListRef.current?.scrollToIndex({
+					index: currentIndex,
+					animated: true,
+					viewPosition: 0.5,
+				});
+			}, 200);
+		}
+	}, [isDropdownOpen, currentIndex, options.length]);
 
 	const currentItem = options[currentIndex];
 	return (
@@ -42,7 +49,7 @@ export default function CommonDropDownListModal({
 					className="flex-row justify-between items-center bg-white border border-gray-300 p-3 rounded-lg shadow-sm"
 				>
 					<Text className="text-lg font-medium text-gray-800" numberOfLines={1}>
-						{currentItem.value}
+						{currentItem?.value}
 					</Text>
 					<Ionicons name="chevron-down" size={24} color="#4b5563" />
 				</TouchableOpacity>
@@ -62,10 +69,18 @@ export default function CommonDropDownListModal({
 								<Ionicons name="close" size={24} color="#4b5563" />
 							</TouchableOpacity>
 						</View>
-						<ScrollView>
-							{options.map((option, index) => (
+						<FlatList
+							ref={flatListRef}
+							data={options}
+							keyExtractor={(item) => item.key.toString()}
+							onScrollToIndexFailed={(info) => {
+								const wait = new Promise(resolve => setTimeout(resolve, 500));
+								wait.then(() => {
+									flatListRef.current?.scrollToIndex({ index: info.index, animated: true, viewPosition: 0.5 });
+								});
+							}}
+							renderItem={({ item: option, index }) => (
 								<TouchableOpacity
-									key={option.key}
 									onPress={() => {
 										onChange?.(option);
 										setCurrentIndex(index);
@@ -85,8 +100,8 @@ export default function CommonDropDownListModal({
 										<Ionicons name="checkmark" size={20} color="#2563eb" />
 									)}
 								</TouchableOpacity>
-							))}
-						</ScrollView>
+							)}
+						/>
 					</View>
 				</TouchableOpacity>
 			</Modal>
