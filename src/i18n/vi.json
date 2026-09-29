@@ -9,7 +9,8 @@
 		"items": {
 			"alphabet": "Bảng chữ cái",
 			"vocab_1000": "Từ vựng",
-			"grammar_basic": "Ngữ pháp",
+			"vocab_gyokai": "Từ vựng chuyên ngành",
+			"grammar_basic": "Ngữ pháp cơ bản",
 			"grammar_donzu": "Ngữ pháp giáo trình Đông Du",
 			"kanji_basic": "Hán tự"
 		}
@@ -35,5 +36,22 @@
 	},
 	"tabs": {
 		"review": "Ôn tập"
+	},
+	"fukushuo": {
+		"tango": {
+			"stt": "",
+			"meaning": "Nghĩa",
+			"hanviet": "Hán Việt",
+			"kanji": "Hán Tự",
+			"hiragana": "Hiragana"
+		},
+		"tango_gyokai": {
+			"group": "Nhóm",
+			"hanviet": "Hán Việt",
+			"meaning": "Nghĩa",
+			"kanji": "Kanji",
+			"hiragana": "Hiragana",
+			"no_topics": "Không có chủ đề nào"
+		}
 	}
 }

@@ -12,6 +12,28 @@ export default function Tango() {
 	const { tangoData, mondaiTangoData, loading } = useGetTango(mondai);
 	const { t } = useTranslation();
 
+	const renderHeader = () => (
+		<View className="flex-row border-b border-dashed border-gray-300 bg-white min-h-[48px]">
+			<View className="flex-1 flex-row px-2">
+				<View className="w-[8%] items-center justify-center border-r border-dashed border-gray-300 px-1 py-3">
+					<Text className="text-blue-800 font-extrabold text-base text-center">{t('fukushuo.tango.stt')}</Text>
+				</View>
+				<View className="w-[24%] items-center justify-center border-r border-dashed border-gray-300 px-2 py-3">
+					<Text className="text-blue-800 font-extrabold text-base text-center">{t('fukushuo.tango.meaning')}</Text>
+				</View>
+				<View className="w-[16%] items-center justify-center border-r border-dashed border-gray-300 px-1 py-3">
+					<Text className="text-blue-800 font-extrabold text-base text-center">{t('fukushuo.tango.hanviet')}</Text>
+				</View>
+				<View className="w-[24%] items-center justify-center border-r border-dashed border-gray-300 px-1 py-3">
+					<Text className="text-blue-800 font-extrabold text-base text-center">{t('fukushuo.tango.kanji')}</Text>
+				</View>
+				<View className="flex-1 items-center justify-center px-2 py-3">
+					<Text className="text-blue-800 font-extrabold text-base text-center">{t('fukushuo.tango.hiragana')}</Text>
+				</View>
+			</View>
+		</View>
+	);
+
 	return (
 		<View className="flex-1 bg-white">
 
@@ -38,6 +60,8 @@ export default function Tango() {
 							index={index}
 						/>
 					)}
+					ListHeaderComponent={renderHeader}
+					stickyHeaderIndices={[0]}
 					showsVerticalScrollIndicator={false}
 					initialNumToRender={15}
 					windowSize={5}

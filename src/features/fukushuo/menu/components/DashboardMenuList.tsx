@@ -48,6 +48,7 @@ const DashboardMenuList = () => {
 			title: t('dashboard.sections.vocabulary'),
 			data: [
 				{ id: '2', title: t('dashboard.items.vocab_1000'), iconName: 'cards', iconColor: APP_COLORS.menuVocab, navLink: 'TangoLayout' },
+				{ id: '2_1', title: t('dashboard.items.vocab_gyokai'), iconName: 'briefcase-outline', iconColor: APP_COLORS.menuVocab, navLink: 'TangoGyokaiLayout' },
 			],
 		},
 		{

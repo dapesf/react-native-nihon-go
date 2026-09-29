@@ -33,6 +33,7 @@ export type RootStackParamList = {
 	KanjiInfoLayout: { kanji: string };
 	AlphabetLayout: undefined;
 	TangoLayout: undefined;
+	TangoGyokaiLayout: undefined;
 };
 
 export type AppNavigationProp = NativeStackNavigationProp<RootStackParamList>;

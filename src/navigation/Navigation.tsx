@@ -14,6 +14,7 @@ import KanjiInfo from '@/features/fukushuo/kanji/layout/KanjiInfo';
 import ResetDatabase from '@/features/other/ResetDatabase';
 import Alphabet from '@/features/fukushuo/alphabet/layout/Alphabet';
 import Tango from '@/features/fukushuo/tango/layout/Tango';
+import TangoGyokaiLayout from '@/features/fukushuo/tango_gyokai/layout/TangoGyokaiLayout';
 import DonZuGrammarScreen from '@/features/fukushuo/donzu-grammar/layout/DonZuGrammar';
 import DonZuLessonDetailScreen from '@/features/fukushuo/donzu-grammar/layout/DonZuLessonDetail';
 import { useTranslation } from 'react-i18next';
@@ -63,6 +64,17 @@ const Navigatior: React.FC = () => {
 					options={({ route }) => ({
 						headerShown: true,
 						headerTitle: t('dashboard.items.vocab_1000'),
+						headerTintColor: 'white',
+						headerBackVisible: true,
+						headerBackButtonDisplayMode: 'minimal',
+					})}>
+				</Stack.Screen>
+				<Stack.Screen
+					name="TangoGyokaiLayout"
+					component={TangoGyokaiLayout}
+					options={({ route }) => ({
+						headerShown: true,
+						headerTitle: t('dashboard.items.vocab_gyokai'),
 						headerTintColor: 'white',
 						headerBackVisible: true,
 						headerBackButtonDisplayMode: 'minimal',

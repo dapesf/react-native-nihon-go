@@ -9,7 +9,8 @@
 		"items": {
 			"alphabet": "五十音",
 			"vocab_1000": "単語",
-			"grammar_basic": "文法",
+			"vocab_gyokai": "専門用語",
+			"grammar_basic": "基礎文法",
 			"grammar_donzu": "東遊文法",
 			"kanji_basic": "漢字"
 		}
@@ -35,5 +36,22 @@
 	},
 	"tabs": {
 		"review": "復習"
+	},
+	"fukushuo": {
+		"tango": {
+			"stt": "番号",
+			"meaning": "意味",
+			"hanviet": "漢越",
+			"kanji": "漢字",
+			"hiragana": "ひらがな"
+		},
+		"tango_gyokai": {
+			"group": "グループ",
+			"hanviet": "漢越",
+			"meaning": "意味",
+			"kanji": "漢字",
+			"hiragana": "ひらがな",
+			"no_topics": "トピックがありません"
+		}
 	}
 }
