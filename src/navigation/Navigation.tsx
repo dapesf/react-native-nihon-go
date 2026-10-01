@@ -15,6 +15,7 @@ import ResetDatabase from '@/features/other/ResetDatabase';
 import Alphabet from '@/features/fukushuo/alphabet/layout/Alphabet';
 import Tango from '@/features/fukushuo/tango/layout/Tango';
 import TangoGyokaiLayout from '@/features/fukushuo/tango_gyokai/layout/TangoGyokaiLayout';
+import KanjiCheckLayout from '@/features/renshuo/kanji-quiz/layout/KanjiCheckLayout';
 import DonZuGrammarScreen from '@/features/fukushuo/donzu-grammar/layout/DonZuGrammar';
 import DonZuLessonDetailScreen from '@/features/fukushuo/donzu-grammar/layout/DonZuLessonDetail';
 import { useTranslation } from 'react-i18next';
@@ -152,6 +153,17 @@ const Navigatior: React.FC = () => {
 					options={({ route }) => ({
 						headerShown: true,
 						headerTitle: t('dashboard.items.alphabet'),
+						headerTintColor: 'white',
+						headerBackVisible: true,
+						headerBackButtonDisplayMode: 'minimal',
+					})}>
+				</Stack.Screen>
+				<Stack.Screen
+					name="KanjiCheckLayout"
+					component={KanjiCheckLayout}
+					options={({ route }) => ({
+						headerShown: true,
+						headerTitle: t('renshuo.kanji_check.title'),
 						headerTintColor: 'white',
 						headerBackVisible: true,
 						headerBackButtonDisplayMode: 'minimal',

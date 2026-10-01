@@ -19,7 +19,7 @@ export type MainTabParamList = {
 	Alphabet: undefined;
 	Tango: undefined;
 	Profile: undefined;
-	CommingSoo: undefined;
+	Renshuo: undefined;
 };
 
 export type RootStackParamList = {
@@ -34,6 +34,7 @@ export type RootStackParamList = {
 	AlphabetLayout: undefined;
 	TangoLayout: undefined;
 	TangoGyokaiLayout: undefined;
+	KanjiCheckLayout: undefined;
 };
 
 export type AppNavigationProp = NativeStackNavigationProp<RootStackParamList>;

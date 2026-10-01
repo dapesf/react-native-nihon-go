@@ -35,7 +35,8 @@
 		"strokes_count": "画数"
 	},
 	"tabs": {
-		"review": "復習"
+		"review": "復習",
+		"renshuo": "練習"
 	},
 	"fukushuo": {
 		"tango": {
@@ -52,6 +53,25 @@
 			"kanji": "漢字",
 			"hiragana": "ひらがな",
 			"no_topics": "トピックがありません"
+		}
+	},
+	"renshuo": {
+		"dashboard": {
+			"sections": {
+				"kanji": "漢字練習"
+			},
+			"items": {
+				"kanji_check": "毎日の漢字"
+			}
+		},
+		"kanji_check": {
+			"title": "毎日の漢字",
+			"progress": "第 {{current}}/{{total}} 問",
+			"correct_message": "正解です！よくできました！",
+			"next_button": "次へ",
+			"finished_message": "おめでとうございます！練習を完了しました！",
+			"restart_button": "もう一度",
+			"menu_button": "メニューに戻る"
 		}
 	}
 }

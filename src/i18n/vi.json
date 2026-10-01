@@ -35,7 +35,8 @@
 		"strokes_count": "Số nét"
 	},
 	"tabs": {
-		"review": "Ôn tập"
+		"review": "Ôn tập",
+		"renshuo": "Luyện tập"
 	},
 	"fukushuo": {
 		"tango": {
@@ -52,6 +53,25 @@
 			"kanji": "Kanji",
 			"hiragana": "Hiragana",
 			"no_topics": "Không có chủ đề nào"
+		}
+	},
+	"renshuo": {
+		"dashboard": {
+			"sections": {
+				"kanji": "Bài tập Kanji"
+			},
+			"items": {
+				"kanji_check": "Kanji mỗi ngày"
+			}
+		},
+		"kanji_check": {
+			"title": "Kanji mỗi ngày",
+			"progress": "Câu {{current}}/{{total}}",
+			"correct_message": "Chính xác! Bạn giỏi quá!",
+			"next_button": "Tiếp tục",
+			"finished_message": "Chúc mừng bạn đã hoàn thành bài tập!",
+			"restart_button": "Làm lại",
+			"menu_button": "Quay về Menu"
 		}
 	}
 }
