@@ -5,6 +5,7 @@ import { AppNavigationProp } from '@/shared/type';
 import { renderFormattedText } from '@/utils/textFormatter';
 import { useGetDonZuGrammarLessons } from '../hooks/useGetDonZuGrammarLessons';
 import { DonZuLessonRecord } from '../type';
+import { Book } from 'lucide-react-native';
 
 export default function DonZuGrammarScreen() {
   const { t } = useTranslation();
@@ -38,30 +39,42 @@ export default function DonZuGrammarScreen() {
 
   const renderItem = ({ item }: { item: DonZuLessonRecord }) => {
     return (
-      <TouchableOpacity 
+      <TouchableOpacity
         className="mb-8 mx-4"
+        style={{
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 6 },
+          shadowOpacity: 0.2,
+          shadowRadius: 8,
+          elevation: 8,
+        }}
         onPress={() => {
-            navigation.navigate('DonZuLessonDetailLayout', { 
-              lesson_number: item.lesson_number,
-              lesson_title: item.title
-            });
+          navigation.navigate('DonZuLessonDetailLayout', {
+            lesson_number: item.lesson_number,
+            lesson_title: item.title
+          });
         }}
       >
-        {/* Banner tiêu đề */}
-        <View className="bg-orange-200 py-2 items-center justify-center">
-          <Text className="text-xl font-bold text-black tracking-widest">
-            {item.title}
-          </Text>
-        </View>
-
-        {/* Box nội dung */}
-        {item.summary_introduction ? (
-          <View className="mt-4 border-2 border-dashed border-black p-4 bg-white items-center">
-            <Text className="text-base text-black leading-8 font-medium text-left w-full">
-              {renderFormattedText(item.summary_introduction)}
+        <View className="border-2 border-black rounded-2xl overflow-hidden bg-white">
+          {/* Banner tiêu đề */}
+          <View className="bg-blue-200 py-2 flex-row items-center justify-center relative">
+            <View className="absolute left-4">
+              <Book size={24} color="black" />
+            </View>
+            <Text className="text-xl font-bold text-black tracking-widest">
+              {item.title}
             </Text>
           </View>
-        ) : null}
+
+          {/* Box nội dung */}
+          {item.summary_introduction ? (
+            <View className="border-t-2 border-black p-4 bg-white items-center">
+              <Text className="text-lg text-black leading-8 font-medium text-left w-full">
+                {renderFormattedText(item.summary_introduction)}
+              </Text>
+            </View>
+          ) : null}
+        </View>
       </TouchableOpacity>
     );
   };
