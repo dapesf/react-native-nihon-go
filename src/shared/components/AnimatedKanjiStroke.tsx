@@ -8,7 +8,7 @@ import Animated, {
 	Easing,
 	useAnimatedReaction,
 } from 'react-native-reanimated';
-import { StrokeNumber } from '@/features/fukushuo/kanji/type';
+import { StrokeNumber } from '@/features/study/kanji/types';
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 const AnimatedText = Animated.createAnimatedComponent(SvgText);

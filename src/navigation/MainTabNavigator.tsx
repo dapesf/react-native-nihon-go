@@ -4,11 +4,11 @@ import { Ionicons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 
 // Import các màn hình của bạn
-import DashboardScreen from '@/features/fukushuo/menu/layout/Dashboard';
-import RenshuoDashboard from '@/features/renshuo/menu/layout/Dashboard';
+import DashboardScreen from '@/features/study/menu/screens/StudyDashboard';
+import PracticeDashboardScreen from '@/features/practice/menu/screens/PracticeDashboard';
 
 // 1. Định nghĩa kiểu dữ liệu cho các Tab
-import { MainTabParamList } from '@/shared/type';
+import { MainTabParamList } from '@/shared/types';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
@@ -40,7 +40,7 @@ export default function MainTabNavigator() {
 						case 'Home':
 							iconName = focused ? 'book' : 'book-outline';
 							break;
-						case 'Renshuo':
+						case 'Practice':
 							iconName = focused ? 'pencil' : 'pencil-outline';
 							break;
 					}
@@ -55,9 +55,9 @@ export default function MainTabNavigator() {
 				options={{ tabBarLabel: t('tabs.review') }}
 			/>
 			<Tab.Screen
-				name="Renshuo"
-				component={RenshuoDashboard}
-				options={{ tabBarLabel: t('tabs.renshuo') }}
+				name="Practice"
+				component={PracticeDashboardScreen}
+				options={{ tabBarLabel: t('tabs.practice') }}
 			/>
 		</Tab.Navigator>
 	);

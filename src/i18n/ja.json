@@ -36,7 +36,7 @@
 	},
 	"tabs": {
 		"review": "復習",
-		"renshuo": "練習"
+		"practice": "練習"
 	},
 	"fukushuo": {
 		"tango": {
@@ -72,6 +72,22 @@
 			"finished_message": "おめでとうございます！練習を完了しました！",
 			"restart_button": "もう一度",
 			"menu_button": "メニューに戻る"
+		},
+		"grammar_exercise": {
+			"back_button": "戻る",
+			"no_exercises": "このレッスンの練習問題はまだありません。",
+			"finished_message": "おめでとうございます！練習を完了しました！",
+			"score": "得点: {{score}}/{{total}}",
+			"restart_button": "もう一度",
+			"progress": "第 {{current}}/{{total}} 問",
+			"correct": "正解！",
+			"incorrect": "不正解！",
+			"correct_answer_label": "正解",
+			"next_button": "次へ",
+			"fill_blank_label": "穴埋め",
+			"sentence_order_label": "文の並べ替え",
+			"drop_zone_hint": "下の単語をタップしてここに追加",
+			"check_button": "チェック"
 		}
 	}
 }

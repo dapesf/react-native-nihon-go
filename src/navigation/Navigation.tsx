@@ -5,19 +5,20 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 //custom
 import '@/i18n';
 import MainTabNavigator from './MainTabNavigator';
-import { RootStackParamList } from '@/shared/type';
-import DashboardScreen from '@/features/fukushuo/menu/layout/Dashboard';
+import { RootStackParamList } from '@/shared/types';
+import DashboardScreen from '@/features/study/menu/screens/StudyDashboard';
 //
-import Grammar from '@/features/fukushuo/grammar/layout/Grammar';
-import KanjiList from '@/features/fukushuo/kanji/layout/KanjiList';
-import KanjiInfo from '@/features/fukushuo/kanji/layout/KanjiInfo';
-import ResetDatabase from '@/features/other/ResetDatabase';
-import Alphabet from '@/features/fukushuo/alphabet/layout/Alphabet';
-import Tango from '@/features/fukushuo/tango/layout/Tango';
-import TangoGyokaiLayout from '@/features/fukushuo/tango_gyokai/layout/TangoGyokaiLayout';
-import KanjiCheckLayout from '@/features/renshuo/kanji-quiz/layout/KanjiCheckLayout';
-import DonZuGrammarScreen from '@/features/fukushuo/donzu-grammar/layout/DonZuGrammar';
-import DonZuLessonDetailScreen from '@/features/fukushuo/donzu-grammar/layout/DonZuLessonDetail';
+import GrammarScreen from '@/features/study/grammar/screens/GrammarScreen';
+import KanjiListScreen from '@/features/study/kanji/screens/KanjiListScreen';
+import KanjiInfoScreen from '@/features/study/kanji/screens/KanjiInfoScreen';
+import ResetDatabase from '@/features/settings/ResetDatabase';
+import AlphabetScreen from '@/features/study/alphabet/screens/AlphabetScreen';
+import TangoScreen from '@/features/study/tango/screens/TangoScreen';
+import TangoGyokaiScreen from '@/features/study/tango-gyokai/screens/TangoGyokaiScreen';
+import KanjiQuizScreen from '@/features/practice/kanji-quiz/screens/KanjiQuizScreen';
+import DonZuGrammarScreen from '@/features/study/donzu-grammar/lesson/screens/DonZuGrammarScreen';
+import DonZuLessonDetailScreen from '@/features/study/donzu-grammar/lesson/screens/DonZuLessonDetailScreen';
+import GrammarExerciseScreen from '@/features/study/donzu-grammar/exercise/screens/GrammarExerciseScreen';
 import { useTranslation } from 'react-i18next';
 import LanguageToggle from '@/shared/components/LanguageToggle';
 import { APP_COLORS } from '@/shared/constants/colors';
@@ -61,7 +62,7 @@ const Navigatior: React.FC = () => {
 				</Stack.Screen>
 				<Stack.Screen
 					name="TangoLayout"
-					component={Tango}
+					component={TangoScreen}
 					options={({ route }) => ({
 						headerShown: true,
 						headerTitle: t('dashboard.items.vocab_1000'),
@@ -71,8 +72,8 @@ const Navigatior: React.FC = () => {
 					})}>
 				</Stack.Screen>
 				<Stack.Screen
-					name="TangoGyokaiLayout"
-					component={TangoGyokaiLayout}
+					name="TangoGyokaiScreen"
+					component={TangoGyokaiScreen}
 					options={({ route }) => ({
 						headerShown: true,
 						headerTitle: t('dashboard.items.vocab_gyokai'),
@@ -83,7 +84,7 @@ const Navigatior: React.FC = () => {
 				</Stack.Screen>
 				<Stack.Screen
 					name="GrammarLayout"
-					component={Grammar}
+					component={GrammarScreen}
 					options={({ route }) => ({
 						headerShown: true,
 						headerTitle: t('dashboard.items.grammar_basic'),
@@ -115,8 +116,19 @@ const Navigatior: React.FC = () => {
 					})}>
 				</Stack.Screen>
 				<Stack.Screen
+					name="GrammarExerciseScreen"
+					component={GrammarExerciseScreen}
+					options={({ route }) => ({
+						headerShown: true,
+						headerTitle: t('dashboard.items.grammar_donzu'),
+						headerTintColor: 'white',
+						headerBackVisible: true,
+						headerBackButtonDisplayMode: 'minimal',
+					})}>
+				</Stack.Screen>
+				<Stack.Screen
 					name="KanjiListLayout"
-					component={KanjiList}
+					component={KanjiListScreen}
 					options={({ route }) => ({
 						headerShown: true,
 						headerTitle: t('dashboard.items.kanji_basic'),
@@ -127,7 +139,7 @@ const Navigatior: React.FC = () => {
 				</Stack.Screen>
 				<Stack.Screen
 					name="KanjiInfoLayout"
-					component={KanjiInfo}
+					component={KanjiInfoScreen}
 					options={({ route }) => ({
 						headerShown: true,
 						headerTitle: route.params?.kanji ?? '',
@@ -149,7 +161,7 @@ const Navigatior: React.FC = () => {
 				</Stack.Screen>
 				<Stack.Screen
 					name="AlphabetLayout"
-					component={Alphabet}
+					component={AlphabetScreen}
 					options={({ route }) => ({
 						headerShown: true,
 						headerTitle: t('dashboard.items.alphabet'),
@@ -159,8 +171,8 @@ const Navigatior: React.FC = () => {
 					})}>
 				</Stack.Screen>
 				<Stack.Screen
-					name="KanjiCheckLayout"
-					component={KanjiCheckLayout}
+					name="KanjiQuizScreen"
+					component={KanjiQuizScreen}
 					options={({ route }) => ({
 						headerShown: true,
 						headerTitle: t('renshuo.kanji_check.title'),

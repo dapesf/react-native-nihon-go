@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import { AppNavigationProp, RootStackParamList } from '@/shared/type';
+import { AppNavigationProp, RootStackParamList } from '@/shared/types';
 
 export const useAppNavigation = () => {
   // Gắn type đã tạo vào hook mặc định của React Navigation

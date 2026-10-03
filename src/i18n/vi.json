@@ -36,7 +36,7 @@
 	},
 	"tabs": {
 		"review": "Ôn tập",
-		"renshuo": "Luyện tập"
+		"practice": "Luyện tập"
 	},
 	"fukushuo": {
 		"tango": {
@@ -72,6 +72,22 @@
 			"finished_message": "Chúc mừng bạn đã hoàn thành bài tập!",
 			"restart_button": "Làm lại",
 			"menu_button": "Quay về Menu"
+		},
+		"grammar_exercise": {
+			"back_button": "Quay lại",
+			"no_exercises": "Chưa có bài tập nào cho bài này.",
+			"finished_message": "Chúc mừng bạn đã hoàn thành bài tập!",
+			"score": "Điểm số: {{score}}/{{total}}",
+			"restart_button": "Làm lại",
+			"progress": "Câu {{current}}/{{total}}",
+			"correct": "Chính xác!",
+			"incorrect": "Chưa đúng!",
+			"correct_answer_label": "Đáp án đúng",
+			"next_button": "Tiếp tục",
+			"fill_blank_label": "Điền vào chỗ trống",
+			"sentence_order_label": "Sắp xếp câu",
+			"drop_zone_hint": "Nhấn vào từ bên dưới để đưa lên đây",
+			"check_button": "Kiểm tra"
 		}
 	}
 }

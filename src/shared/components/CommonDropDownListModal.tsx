@@ -8,7 +8,7 @@ import {
 	View,
 } from "react-native";
 // import { Check, ChevronDown } from "lucide-react-native";
-import type { Option, PageDropdownProps } from "@/shared/type";
+import type { Option, PageDropdownProps } from "@/shared/types";
 import Ionicons from "@expo/vector-icons/build/Ionicons";
 
 const defaultPages: Option[] = [
